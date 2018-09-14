@@ -1,8 +1,6 @@
 import subprocess as sp
 import os
 
-from pip._vendor.distlib.compat import raw_input
-
 class whole:
     def __init__(self):
         self.isRelex = False
@@ -97,6 +95,33 @@ class whole:
             print("Error while executing code!")
 
     # print(proc.communicate())
+
+    """
+    		this is the function that accepts rule from user and communicate it with the process
+    	"""
+
+    def ghostRule(self, rule):
+        try:
+            # storing all the rule entered by the user to a global variable called all_rule
+            ruletostring = rule.decode()
+            if ((ruletostring == '')):
+                # print("Please enter a rule")
+                pass
+            else:
+                # if(str(rule)[2:3] != "("):
+                # 	print("warning: possibly unbound variable: ", str(rule)[2:])
+                if (('(ghost-parse-file') in ruletostring
+                        or ('(ghost-parse') in ruletostring):
+                    self.all_rule = self.all_rule + ruletostring + '\n'
+                    # creating displayPopen method to get the asked result
+                    self.displayPopen()
+                else:
+                    action = '(map cog-name (test-ghost \"{}\"))'.format(ruletostring)
+                    self.all_rule = self.all_rule + action + '\n'
+                    # creating displayPopen method to get the asked result
+                    self.displayPopen()
+        except Exception as e:
+            print("Error Occured in writing rule: ", e)
 
 
 # isRelex = False

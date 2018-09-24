@@ -11,69 +11,38 @@ class whole:
 		self.len_of_output_from_guile = []
 
 	def takeInput(self):
-
-		# starting the relex server
-		if (self.isRelex == False):
-			self.startRelex()
+		if not self.isRelex:
 			self.isRelex = True
-
-		# starting and cummunicating with the Guile
+			self.startRelex()
 		self.startGuile()
+		value = input("Please enter your rule or '(quit)' to exit: ")
+		if value == "(quit)":
+			found = input("Are you sure? Y or N: ")
+			if found == "Y" or found == "y":
+				raise SystemExit
+			else: self.takeInput()
 
-		# asking the user continously for what he is looking for
-		while(True):
-			value = input("Please enter your rule or '(quit)' to exit: ")
-			if(value == "(quit)"):
-				found = input("Are you sure? Y or N: ")
-				if found == "Y" or found == "y":
-					raise SystemExit
-				elif found == "N" or found == "n":
-					self.ghostRule(value.encode())
-
-			# processing the question of user to cummunicate it with Guile
-			self.ghostRule(value.encode())
-
+		self.ghostRule(value.encode())
 
 	def startRelex(self):
-		print("-------opening relex server------------")
-		#sp.call('./opencog-server.sh', cwd='/home/abeni/relex')
+		print("----------opening relex server------------")
 		try:
-			os.chdir("/home/aman/relex/")
+			os.chdir("/home/brook/Documents/New_OpenCog/OPENCOG/relex/")
 			os.system("gnome-terminal -e 'bash -c \"./opencog-server.sh; exec bash\"'")
-			#sp.call("gnome-terminal --command ='./home/aman/relex/opencog-server.sh'", shell=True)
 			print("Relex Server opened successfully")
 		except Exception as e:
+			self.isRelex = False
 			print("Error occured in opening relex server", e)
-
-		# if it is using docker
-	    #subprocess.call('sudo docker run -it -p 4444:4444 opencog/relex /bin/sh opencog-server.sh', shell=True)
-
-	def startRelex2(self):
-		a = [1,2,3,4,5]
-		os.chdir("/home/aman/relex/")
-		return_code = sp.call("gnome-terminal --command ='./opencog-server.sh'", shell = True)
 
 
 	def startGuile(self):
-		print("--------------------starting GUILE--------------")
+		print("--------------------starting GUILE----------------------")
 		self.proc = sp.Popen('guile' , stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.STDOUT)
-		# self.proc = self.newPopen(sp.PIPE)
-		# self.proc = sp.Popen('guile', stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.STDOUT, bufsize=1, universal_newlines=True)
-		# self.proc = sp.check_call('guile')
-		#
-		# try:
-		# 	output, error = self.proc.communicate(timeout=20)
-		# except:
-		# 	self.proc.kill()
-		# 	output, error = self.proc.communicate()
-		#
-		# a = proc.communicate(input=None)
-		#
+
 		try:
 			a = self.proc.stdout.readline()
-			if("GNU Guile" in a.decode()):
+			if "GNU Guile" in a.decode():
 				print("guile successfully opened")
-
 			else:
 				print("there is a problem with guile")
 				exit(0)

@@ -1,7 +1,5 @@
 import subprocess as sp
-import os
 
-from apighost import whole
 
 
 class Relex:
@@ -32,9 +30,5 @@ class Relex:
                 self.isRelex = False
                 print("Error occured in opening relex server")
                 exit(0)
-
-        if self.isRelex:
-            whole()
-
 
 serve = Relex()

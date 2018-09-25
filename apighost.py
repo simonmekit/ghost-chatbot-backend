@@ -5,8 +5,9 @@ import sys
 
 class whole:
     def __init__(self):
-        self.proc = ""
         self.isGuile = False
+        self.takeInput()
+        self.proc = ""
 
     def takeInput(self):
         self.startGuile()
@@ -40,14 +41,13 @@ class whole:
             try:
                 a = self.proc.stdout.readline()
                 if "GNU Guile" in a.decode():
-                    print("guile successfully opened")
+                    print("Guile successfully opened")
                 else:
                     print("Guile Failed!")
                     exit(0)
             except Exception as e:
-                print("Error Occured in starting guile: ", e)
+                print("Error occurred in starting guile: ", e)
         self.loadModules()
-
         self.testGuile()
 
     # def displayPopen(self):
@@ -177,14 +177,14 @@ class whole:
         # loading modules
         try:
             modules = ""
-            with open('/home/brook/Projects/newghostapi/module.txt', 'r') as f:
+            with open('module.txt', 'r') as f:
                 for line in f:
                     modules += line
                 toByte = modules.encode()
                 self.proc.stdin.write(toByte)
                 print("Modules successfully loaded from file")
         except Exception as e:
-            print("Error occured while trying to load modules from file: ", e)
+            print("Error occurred while trying to load modules from file: ", e)
 
     def testGuile(self):
         try:
@@ -198,24 +198,23 @@ class whole:
                     """
             g = self.proc.stdin.write(test)
             print("Test completed successfully!")
-            print(self.proc.communicate())
+            # print(self.proc.communicate())
         except Exception as e:
             print("Error Occured in testing rule: ", e)
 
     def ghostRule(self, rule):
         try:
-            ruletostring = rule.decode()
-            if ruletostring == '':
-                pass
-            else:
-                if 'ghost-parse-file' in ruletostring or 'ghost-parse' in ruletostring:
-                    # self.all_rule = self.all_rule + ruletostring + '\n'
-                    self.displayPopen()
-                else:
-                    action = '(map cog-name (test-ghost \"{}\"))'.format(ruletostring)
-                    self.all_rule = self.all_rule + action + '\n'
-                    self.displayPopen()
+            toString = rule.decode()
 
+            if 'ghost-parse-file' in toString or 'ghost-parse' in toString:
+                self.proc.stdin.write(toString)
+                return self.proc.stdout.readline()
+            elif toString != '':
+                rule = '(map cog-name (test-ghost \"{}\"))'.format(toString)
+                self.proc.stdin.write(rule)
+                return self.proc.stdout.readline()
+            elif toString == '':
+                self.takeInput()
         # communicating the input with the sheme guile process
         # the great problem i faced is cannot send input after starting communication
         # c = self.proc.communicate(input=rule)

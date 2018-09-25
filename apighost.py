@@ -49,20 +49,6 @@ class whole:
         self.loadModules()
 
         self.testGuile()
-        try:
-            code = b"""
-					(ghost-parse "u: (hello) hi there")
-					"""
-            self.proc.stdin.write(code)
-            # print(self.proc.stdout.readline())
-            test = b"""
-					(map cog-name (test-ghost "hello"))
-					"""
-            g = self.proc.stdin.write(test)
-            print("Test completed successfully!")
-            print(self.proc.communicate())
-        except Exception as e:
-            print("Error Occured in testing rule: ", e)
 
     # def displayPopen(self):
     # 	disp = sp.Popen('guile', stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.STDOUT)
@@ -199,6 +185,22 @@ class whole:
                 print("Modules successfully loaded from file")
         except Exception as e:
             print("Error occured while trying to load modules from file: ", e)
+
+    def testGuile(self):
+        try:
+            code = b"""
+                    (ghost-parse "u: (hello) hi there")
+                    """
+            self.proc.stdin.write(code)
+            # print(self.proc.stdout.readline())
+            test = b"""
+                    (map cog-name (test-ghost "hello"))
+                    """
+            g = self.proc.stdin.write(test)
+            print("Test completed successfully!")
+            print(self.proc.communicate())
+        except Exception as e:
+            print("Error Occured in testing rule: ", e)
 
     def ghostRule(self, rule):
         try:

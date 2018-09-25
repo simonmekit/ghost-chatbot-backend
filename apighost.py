@@ -6,6 +6,7 @@ import sys
 class whole:
     def __init__(self):
         self.proc = ""
+        self.isGuile = False
 
     def takeInput(self):
         self.startGuile()
@@ -45,19 +46,9 @@ class whole:
                     exit(0)
             except Exception as e:
                 print("Error Occured in starting guile: ", e)
+        self.loadModules()
 
-        # loading modules
-        try:
-            modules = ""
-            with open('/home/brook/Projects/newghostapi/module.txt', 'r') as f:
-                for line in f:
-                    modules += line
-                toByte = modules.encode()
-                self.proc.stdin.write(toByte)
-                print("Modules successfully loaded from file")
-        except Exception as e:
-            print("Error occured while trying to load modules from file: ", e)
-
+        self.testGuile()
         try:
             code = b"""
 					(ghost-parse "u: (hello) hi there")
@@ -195,6 +186,19 @@ class whole:
     # 			i = i+1
     # 	except Exception as e:
     # 		print("error occured in writing rule", e)
+
+    def loadModules(self):
+        # loading modules
+        try:
+            modules = ""
+            with open('/home/brook/Projects/newghostapi/module.txt', 'r') as f:
+                for line in f:
+                    modules += line
+                toByte = modules.encode()
+                self.proc.stdin.write(toByte)
+                print("Modules successfully loaded from file")
+        except Exception as e:
+            print("Error occured while trying to load modules from file: ", e)
 
     def ghostRule(self, rule):
         try:

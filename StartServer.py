@@ -7,7 +7,6 @@ from apighost import whole
 class Relex:
     def __init__(self):
         self.isRelex = False
-        self.isGuile = False
         self.startRelex()
         # self.proc = ""
 

@@ -6,8 +6,8 @@ import sys
 class whole:
     def __init__(self):
         self.isGuile = False
-        self.takeInput()
         self.proc = ""
+        self.takeInput()
 
     def takeInput(self):
         self.startGuile()
@@ -82,7 +82,7 @@ class whole:
                 # print(self.proc.stdout.)
             elif toString != '':
                 rule = '(map cog-name (test-ghost \"{}\"))'.format(toString)
-                self.proc.stdin.write(rule.encode())
+                print(self.proc.stdin.write(rule.encode()))
                 # print(self.proc.stdout.communicate())
                 # return self.proc.stdout.readline()
             else: self.takeInput()

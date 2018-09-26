@@ -8,17 +8,6 @@ class Relex:
         self.startRelex()
         # self.proc = ""
 
-    # def takeInput(self):
-    #     self.startGuile()
-    #     value = input("Please enter your rule or '(quit)' to exit: ")
-    #     if value == "(quit)":
-    #         found = input("Are you sure? Y or N: ")
-    #         if found == "Y" or found == "y":
-    #             raise SystemExit
-    #         else:
-    #             self.takeInput()
-    #     self.ghostRule(value.encode())
-
     def startRelex(self):
         if not self.isRelex:
             print("----------opening relex server------------")

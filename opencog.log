@@ -1,0 +1,1195 @@
+[2018-09-25 08:06:12:974] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 08:06:13:018] [WARN] Could not retrieve parameter URE:attention-allocation for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 08:06:13:018] [WARN] Could not retrieve parameter URE:FC:retry-sources for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 08:06:13:019] [WARN] Could not retrieve parameter URE:BC:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 08:06:13:019] [WARN] Could not retrieve parameter URE:BC:maximum-bit-size for rule-based system R2L-en-RuleBase. Use default value -1 instead.
+[2018-09-25 08:06:13:019] [WARN] Could not retrieve parameter URE:BC:MM:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 08:06:13:019] [WARN] Could not retrieve parameter URE:BC:MM:compressiveness for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 08:06:13:030] [WARN] No configuration file was loaded! Param=STARTING_STI_FUNDS
+[2018-09-25 08:06:13:030] [WARN] No configuration file was loaded! Param=STARTING_LTI_FUNDS
+[2018-09-25 08:06:13:030] [WARN] No configuration file was loaded! Param=STI_FUNDS_BUFFER
+[2018-09-25 08:06:13:030] [WARN] No configuration file was loaded! Param=LTI_FUNDS_BUFFER
+[2018-09-25 08:06:13:030] [WARN] No configuration file was loaded! Param=TARGET_LTI_FUNDS
+[2018-09-25 08:06:13:030] [WARN] No configuration file was loaded! Param=TARGET_STI_FUNDS
+[2018-09-25 08:06:13:030] [WARN] No configuration file was loaded! Param=ECAN_STARTING_ATOM_STI_WAGE
+[2018-09-25 08:06:13:030] [WARN] No configuration file was loaded! Param=ECAN_STARTING_ATOM_LTI_WAGE
+[2018-09-25 08:06:13:030] [WARN] No configuration file was loaded! Param=ECAN_MAX_AF_SIZE
+[2018-09-25 08:06:13:035] [INFO] [GHOST] Say: "hi there"
+[2018-09-25 08:06:13:069] [ERROR] Backtrace:
+In current input:
+    10:34 13 (_)
+In opencog/ghost/test.scm:
+     39:4 12 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17 11 (map1 (#))
+In unknown file:
+          10 (opencog-extension psi-imply (#))
+           9 (apply-smob/1 #<catch-closure 2aab5c0>)
+           8 (apply-smob/1 #<catch-closure 2aab540>)
+In opencog/ghost/terms.scm:
+   393:13  7 (ghost-execute-action . _)
+In unknown file:
+           6 (opencog-extension cog-execute! (#))
+           5 (apply-smob/1 #<catch-closure 2aab120>)
+In ice-9/eval.scm:
+   191:27  4 (_ #f)
+   223:20  3 (proc #<directory (guile-user) 2646140>)
+In unknown file:
+           2 (%resolve-variable (7 . prt-say-text) #<directory (guil…>)
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 unbound-variable (#f "Unbound …" …))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 2aab0e0> unbound-variable …)
+
+ERROR: In procedure apply-smob/1:
+Unbound variable: prt-say-text
+ABORT: unbound-variable
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1055)
+	Stack Trace:
+	2: basic_string.h:293	  std::string::_M_data() const
+	3: Logger.cc:493	  opencog::Logger::Error::operator()(char const*, ...)
+	4: exceptions.cc:55	  opencog::StandardException::parse_error_message(char const*, __va_list_tag*, bool)
+	5: exceptions.cc:81	  opencog::StandardException::parse_error_message(char const*, char const*, __va_list_tag*, bool)
+	6: exceptions.cc:150	  opencog::RuntimeException::RuntimeException(char const*, char const*, ...)
+	7: SchemeEval.cc:1068	  opencog::SchemeEval::apply_v(std::string const&, opencog::Handle)
+	8: shared_ptr.h:449	  opencog::EvaluationLink::do_evaluate(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	9: shared_ptr_base.h:545	~__shared_count()
+	10: EvaluationLink.cc:508	  opencog::EvaluationLink::do_evaluate(opencog::AtomSpace*, opencog::Handle const&, bool)
+	11: shared_ptr_base.h:545	~__shared_count()
+	12: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	13: stl_tree.h:671	~_Rb_tree()
+	14: SchemeModule.cc:41	  opencog::FunctionWrap::as_wrapper_h_h(opencog::Handle)
+	15: shared_ptr_base.h:545	~__shared_count()
+	16: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	17: vm-engine.c:787	vm_debug_engine()
+	18: vm.c:1258	scm_call_n()
+	19: eval.c:664	scm_primitive_eval()
+	20: eval.c:696	scm_eval()
+	21: vm-engine.c:787	vm_debug_engine()
+	22: vm.c:1258	scm_call_n()
+	23: throw.c:139	catch()
+	24: SchemeEval.cc:790	  opencog::SchemeEval::do_scm_eval(scm_unused_struct*, scm_unused_struct* (*)(void*))
+	25: SchemeEval.cc:1029	  opencog::SchemeEval::do_apply_scm(std::string const&, opencog::Handle const&)
+	26: SchemeEval.cc:1081	  opencog::SchemeEval::c_wrap_apply_v(void*)
+	27: continuations.c:422	c_body()
+	28: vm-engine.c:787	vm_debug_engine()
+	29: vm.c:1258	scm_call_n()
+	30: throw.c:139	catch()
+	31: continuations.c:367	scm_i_with_continuation_barrier()
+	32: continuations.c:461	scm_c_with_continuation_barrier()
+	33: misc.c:1968	GC_call_with_stack_base()
+	34: threads.c:711	scm_with_guile()
+	35: shared_ptr_base.h:560	  std::__shared_count<(__gnu_cxx::_Lock_policy)2>::operator=(std::__shared_count<(__gnu_cxx::_Lock_policy)2> const&)
+	36: shared_ptr.h:449	  opencog::ExecutionOutputLink::do_execute(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	37: ExecutionOutputLink.cc:113	  opencog::ExecutionOutputLink::execute(opencog::AtomSpace*, bool) const
+	38: shared_ptr_base.h:545	~__shared_count()
+	39: Context.h:56	operator=()
+	40: Instantiator.cc:496	  opencog::Instantiator::walk_tree(opencog::Handle const&, bool)
+	41: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	42: shared_ptr_base.h:545	~__shared_count()
+	43: OpenPsiSCM.cc:134	  opencog::OpenPsiSCM::imply(opencog::Handle const&)
+	44: shared_ptr_base.h:545	~__shared_count()
+	45: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	46: vm-engine.c:787	vm_debug_engine()
+	47: vm.c:1258	scm_call_n()
+	48: eval.c:664	scm_primitive_eval()
+	49: eval.c:696	scm_eval()
+
+[2018-09-25 08:06:14:080] [ERROR] Backtrace:
+In current input:
+    10:34  9 (_)
+In opencog/ghost/test.scm:
+     39:4  8 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17  7 (map1 (#))
+In unknown file:
+           6 (opencog-extension psi-imply (#))
+           5 (apply-smob/1 #<catch-closure 2aab5c0>)
+           4 (apply-smob/1 #<catch-closure 2aab540>)
+In opencog/ghost/terms.scm:
+   393:13  3 (ghost-execute-action . _)
+In unknown file:
+           2 (opencog-extension cog-execute! (#))
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 C++-EXCEPTION ("cog-execute!" "…"))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 2aab500> C++-EXCEPTION "…" …)
+
+ERROR: In procedure apply-smob/1:
+In procedure cog-execute!: Backtrace:
+In current input:
+    10:34 13 (_)
+In opencog/ghost/test.scm:
+     39:4 12 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17 11 (map1 (#))
+In unknown file:
+          10 (opencog-extension psi-imply (#))
+           9 (apply-smob/1 #<catch-closure 2aab5c0>)
+           8 (apply-smob/1 #<catch-closure 2aab540>)
+In opencog/ghost/terms.scm:
+   393:13  7 (ghost-execute-action . _)
+In unknown file:
+           6 (opencog-extension cog-execute! (#))
+           5 (apply-smob/1 #<catch-closure 2aab120>)
+In ice-9/eval.scm:
+   191:27  4 (_ #f)
+   223:20  3 (proc #<directory (guile-user) 2646140>)
+In unknown file:
+           2 (%resolve-variable (7 . prt-say-text) #<directory (guil…>)
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 unbound-variable (#f "Unbound …" …))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 2aab0e0> unbound-variable …)
+
+ERROR: In procedure apply-smob/1:
+Unbound variable: prt-say-text
+ABORT: unbound-variable
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1055)
+Function args:
+((PutLink
+   (DefinedPredicateNode "Say")
+   (Node "hi there")
+)
+)
+ABORT: C++-EXCEPTION
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1068)
+	Stack Trace:
+	2: basic_string.h:293	  std::string::_M_data() const
+	3: Logger.cc:493	  opencog::Logger::Error::operator()(char const*, ...)
+	4: exceptions.cc:55	  opencog::StandardException::parse_error_message(char const*, __va_list_tag*, bool)
+	5: exceptions.cc:81	  opencog::StandardException::parse_error_message(char const*, char const*, __va_list_tag*, bool)
+	6: exceptions.cc:150	  opencog::RuntimeException::RuntimeException(char const*, char const*, ...)
+	7: SchemeEval.cc:1068	  opencog::SchemeEval::apply_v(std::string const&, opencog::Handle)
+	8: shared_ptr.h:449	  opencog::ExecutionOutputLink::do_execute(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	9: ExecutionOutputLink.cc:113	  opencog::ExecutionOutputLink::execute(opencog::AtomSpace*, bool) const
+	10: shared_ptr_base.h:545	~__shared_count()
+	11: Context.h:56	operator=()
+	12: Instantiator.cc:496	  opencog::Instantiator::walk_tree(opencog::Handle const&, bool)
+	13: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	14: shared_ptr_base.h:545	~__shared_count()
+	15: OpenPsiSCM.cc:134	  opencog::OpenPsiSCM::imply(opencog::Handle const&)
+	16: shared_ptr_base.h:545	~__shared_count()
+	17: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	18: vm-engine.c:787	vm_debug_engine()
+	19: vm.c:1258	scm_call_n()
+	20: eval.c:664	scm_primitive_eval()
+	21: eval.c:696	scm_eval()
+	22: script.c:454	scm_shell()
+	23: init.c:342	invoke_main_func()
+	24: continuations.c:422	c_body()
+	25: vm-engine.c:787	vm_regular_engine()
+	26: vm.c:1258	scm_call_n()
+	27: throw.c:139	catch()
+	28: continuations.c:367	scm_i_with_continuation_barrier()
+	29: continuations.c:461	scm_c_with_continuation_barrier()
+	30: threads.c:664	with_guile()
+	31: misc.c:1968	GC_call_with_stack_base()
+	32: threads.c:711	scm_with_guile()
+	33: init.c:328	scm_boot_guile()
+	34: guile.c:103	main()
+	35: libc-start.c:321	__libc_start_main()
+	36: [0x400995] ??() ??:0
+
+[2018-09-25 08:19:15:816] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 08:38:12:736] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 09:06:51:394] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 09:07:56:375] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 09:08:09:193] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 09:09:04:892] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 09:12:13:256] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 09:19:36:746] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 09:19:36:779] [WARN] Could not retrieve parameter URE:attention-allocation for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:19:36:779] [WARN] Could not retrieve parameter URE:FC:retry-sources for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:19:36:779] [WARN] Could not retrieve parameter URE:BC:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:19:36:779] [WARN] Could not retrieve parameter URE:BC:maximum-bit-size for rule-based system R2L-en-RuleBase. Use default value -1 instead.
+[2018-09-25 09:19:36:779] [WARN] Could not retrieve parameter URE:BC:MM:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:19:36:779] [WARN] Could not retrieve parameter URE:BC:MM:compressiveness for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:19:36:791] [WARN] No configuration file was loaded! Param=STARTING_STI_FUNDS
+[2018-09-25 09:19:36:791] [WARN] No configuration file was loaded! Param=STARTING_LTI_FUNDS
+[2018-09-25 09:19:36:791] [WARN] No configuration file was loaded! Param=STI_FUNDS_BUFFER
+[2018-09-25 09:19:36:791] [WARN] No configuration file was loaded! Param=LTI_FUNDS_BUFFER
+[2018-09-25 09:19:36:791] [WARN] No configuration file was loaded! Param=TARGET_LTI_FUNDS
+[2018-09-25 09:19:36:791] [WARN] No configuration file was loaded! Param=TARGET_STI_FUNDS
+[2018-09-25 09:19:36:791] [WARN] No configuration file was loaded! Param=ECAN_STARTING_ATOM_STI_WAGE
+[2018-09-25 09:19:36:791] [WARN] No configuration file was loaded! Param=ECAN_STARTING_ATOM_LTI_WAGE
+[2018-09-25 09:19:36:791] [WARN] No configuration file was loaded! Param=ECAN_MAX_AF_SIZE
+[2018-09-25 09:19:36:796] [INFO] [GHOST] Say: "hi there"
+[2018-09-25 09:19:36:820] [ERROR] Backtrace:
+In current input:
+    10:34 13 (_)
+In opencog/ghost/test.scm:
+     39:4 12 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17 11 (map1 (#))
+In unknown file:
+          10 (opencog-extension psi-imply (#))
+           9 (apply-smob/1 #<catch-closure 1a9a920>)
+           8 (apply-smob/1 #<catch-closure 1a9a8a0>)
+In opencog/ghost/terms.scm:
+   393:13  7 (ghost-execute-action . _)
+In unknown file:
+           6 (opencog-extension cog-execute! (#))
+           5 (apply-smob/1 #<catch-closure 1a9a4c0>)
+In ice-9/eval.scm:
+   191:27  4 (_ #f)
+   223:20  3 (proc #<directory (guile-user) 1131140>)
+In unknown file:
+           2 (%resolve-variable (7 . prt-say-text) #<directory (guil…>)
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 unbound-variable (#f "Unbound …" …))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 1a9a480> unbound-variable …)
+
+ERROR: In procedure apply-smob/1:
+Unbound variable: prt-say-text
+ABORT: unbound-variable
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1055)
+	Stack Trace:
+	2: basic_string.h:293	  std::string::_M_data() const
+	3: Logger.cc:493	  opencog::Logger::Error::operator()(char const*, ...)
+	4: exceptions.cc:55	  opencog::StandardException::parse_error_message(char const*, __va_list_tag*, bool)
+	5: exceptions.cc:81	  opencog::StandardException::parse_error_message(char const*, char const*, __va_list_tag*, bool)
+	6: exceptions.cc:150	  opencog::RuntimeException::RuntimeException(char const*, char const*, ...)
+	7: SchemeEval.cc:1068	  opencog::SchemeEval::apply_v(std::string const&, opencog::Handle)
+	8: shared_ptr.h:449	  opencog::EvaluationLink::do_evaluate(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	9: shared_ptr_base.h:545	~__shared_count()
+	10: EvaluationLink.cc:508	  opencog::EvaluationLink::do_evaluate(opencog::AtomSpace*, opencog::Handle const&, bool)
+	11: shared_ptr_base.h:545	~__shared_count()
+	12: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	13: stl_tree.h:671	~_Rb_tree()
+	14: SchemeModule.cc:41	  opencog::FunctionWrap::as_wrapper_h_h(opencog::Handle)
+	15: shared_ptr_base.h:545	~__shared_count()
+	16: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	17: vm-engine.c:787	vm_debug_engine()
+	18: vm.c:1258	scm_call_n()
+	19: eval.c:664	scm_primitive_eval()
+	20: eval.c:696	scm_eval()
+	21: vm-engine.c:787	vm_debug_engine()
+	22: vm.c:1258	scm_call_n()
+	23: throw.c:139	catch()
+	24: SchemeEval.cc:790	  opencog::SchemeEval::do_scm_eval(scm_unused_struct*, scm_unused_struct* (*)(void*))
+	25: SchemeEval.cc:1029	  opencog::SchemeEval::do_apply_scm(std::string const&, opencog::Handle const&)
+	26: SchemeEval.cc:1081	  opencog::SchemeEval::c_wrap_apply_v(void*)
+	27: continuations.c:422	c_body()
+	28: vm-engine.c:787	vm_debug_engine()
+	29: vm.c:1258	scm_call_n()
+	30: throw.c:139	catch()
+	31: continuations.c:367	scm_i_with_continuation_barrier()
+	32: continuations.c:461	scm_c_with_continuation_barrier()
+	33: misc.c:1968	GC_call_with_stack_base()
+	34: threads.c:711	scm_with_guile()
+	35: shared_ptr_base.h:560	  std::__shared_count<(__gnu_cxx::_Lock_policy)2>::operator=(std::__shared_count<(__gnu_cxx::_Lock_policy)2> const&)
+	36: shared_ptr.h:449	  opencog::ExecutionOutputLink::do_execute(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	37: ExecutionOutputLink.cc:113	  opencog::ExecutionOutputLink::execute(opencog::AtomSpace*, bool) const
+	38: shared_ptr_base.h:545	~__shared_count()
+	39: Context.h:56	operator=()
+	40: Instantiator.cc:496	  opencog::Instantiator::walk_tree(opencog::Handle const&, bool)
+	41: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	42: shared_ptr_base.h:545	~__shared_count()
+	43: OpenPsiSCM.cc:134	  opencog::OpenPsiSCM::imply(opencog::Handle const&)
+	44: shared_ptr_base.h:545	~__shared_count()
+	45: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	46: vm-engine.c:787	vm_debug_engine()
+	47: vm.c:1258	scm_call_n()
+	48: eval.c:664	scm_primitive_eval()
+	49: eval.c:696	scm_eval()
+
+[2018-09-25 09:19:37:317] [ERROR] Backtrace:
+In current input:
+    10:34  9 (_)
+In opencog/ghost/test.scm:
+     39:4  8 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17  7 (map1 (#))
+In unknown file:
+           6 (opencog-extension psi-imply (#))
+           5 (apply-smob/1 #<catch-closure 1a9a920>)
+           4 (apply-smob/1 #<catch-closure 1a9a8a0>)
+In opencog/ghost/terms.scm:
+   393:13  3 (ghost-execute-action . _)
+In unknown file:
+           2 (opencog-extension cog-execute! (#))
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 C++-EXCEPTION ("cog-execute!" "…"))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 1a9a860> C++-EXCEPTION "…" …)
+
+ERROR: In procedure apply-smob/1:
+In procedure cog-execute!: Backtrace:
+In current input:
+    10:34 13 (_)
+In opencog/ghost/test.scm:
+     39:4 12 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17 11 (map1 (#))
+In unknown file:
+          10 (opencog-extension psi-imply (#))
+           9 (apply-smob/1 #<catch-closure 1a9a920>)
+           8 (apply-smob/1 #<catch-closure 1a9a8a0>)
+In opencog/ghost/terms.scm:
+   393:13  7 (ghost-execute-action . _)
+In unknown file:
+           6 (opencog-extension cog-execute! (#))
+           5 (apply-smob/1 #<catch-closure 1a9a4c0>)
+In ice-9/eval.scm:
+   191:27  4 (_ #f)
+   223:20  3 (proc #<directory (guile-user) 1131140>)
+In unknown file:
+           2 (%resolve-variable (7 . prt-say-text) #<directory (guil…>)
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 unbound-variable (#f "Unbound …" …))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 1a9a480> unbound-variable …)
+
+ERROR: In procedure apply-smob/1:
+Unbound variable: prt-say-text
+ABORT: unbound-variable
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1055)
+Function args:
+((PutLink
+   (DefinedPredicateNode "Say")
+   (Node "hi there")
+)
+)
+ABORT: C++-EXCEPTION
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1068)
+	Stack Trace:
+	2: basic_string.h:293	  std::string::_M_data() const
+	3: Logger.cc:493	  opencog::Logger::Error::operator()(char const*, ...)
+	4: exceptions.cc:55	  opencog::StandardException::parse_error_message(char const*, __va_list_tag*, bool)
+	5: exceptions.cc:81	  opencog::StandardException::parse_error_message(char const*, char const*, __va_list_tag*, bool)
+	6: exceptions.cc:150	  opencog::RuntimeException::RuntimeException(char const*, char const*, ...)
+	7: SchemeEval.cc:1068	  opencog::SchemeEval::apply_v(std::string const&, opencog::Handle)
+	8: shared_ptr.h:449	  opencog::ExecutionOutputLink::do_execute(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	9: ExecutionOutputLink.cc:113	  opencog::ExecutionOutputLink::execute(opencog::AtomSpace*, bool) const
+	10: shared_ptr_base.h:545	~__shared_count()
+	11: Context.h:56	operator=()
+	12: Instantiator.cc:496	  opencog::Instantiator::walk_tree(opencog::Handle const&, bool)
+	13: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	14: shared_ptr_base.h:545	~__shared_count()
+	15: OpenPsiSCM.cc:134	  opencog::OpenPsiSCM::imply(opencog::Handle const&)
+	16: shared_ptr_base.h:545	~__shared_count()
+	17: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	18: vm-engine.c:787	vm_debug_engine()
+	19: vm.c:1258	scm_call_n()
+	20: eval.c:664	scm_primitive_eval()
+	21: eval.c:696	scm_eval()
+	22: script.c:454	scm_shell()
+	23: init.c:342	invoke_main_func()
+	24: continuations.c:422	c_body()
+	25: vm-engine.c:787	vm_regular_engine()
+	26: vm.c:1258	scm_call_n()
+	27: throw.c:139	catch()
+	28: continuations.c:367	scm_i_with_continuation_barrier()
+	29: continuations.c:461	scm_c_with_continuation_barrier()
+	30: threads.c:664	with_guile()
+	31: misc.c:1968	GC_call_with_stack_base()
+	32: threads.c:711	scm_with_guile()
+	33: init.c:328	scm_boot_guile()
+	34: guile.c:103	main()
+	35: libc-start.c:321	__libc_start_main()
+	36: [0x400995] ??() ??:0
+
+[2018-09-25 09:19:37:795] [WARN] Could not retrieve parameter URE:attention-allocation for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:19:37:795] [WARN] Could not retrieve parameter URE:FC:retry-sources for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:19:37:795] [WARN] Could not retrieve parameter URE:BC:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:19:37:795] [WARN] Could not retrieve parameter URE:BC:maximum-bit-size for rule-based system R2L-en-RuleBase. Use default value -1 instead.
+[2018-09-25 09:19:37:795] [WARN] Could not retrieve parameter URE:BC:MM:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:19:37:796] [WARN] Could not retrieve parameter URE:BC:MM:compressiveness for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:20:30:109] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 09:20:30:139] [WARN] Could not retrieve parameter URE:attention-allocation for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:20:30:139] [WARN] Could not retrieve parameter URE:FC:retry-sources for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:20:30:139] [WARN] Could not retrieve parameter URE:BC:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:20:30:139] [WARN] Could not retrieve parameter URE:BC:maximum-bit-size for rule-based system R2L-en-RuleBase. Use default value -1 instead.
+[2018-09-25 09:20:30:139] [WARN] Could not retrieve parameter URE:BC:MM:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:20:30:139] [WARN] Could not retrieve parameter URE:BC:MM:compressiveness for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:20:30:150] [WARN] No configuration file was loaded! Param=STARTING_STI_FUNDS
+[2018-09-25 09:20:30:150] [WARN] No configuration file was loaded! Param=STARTING_LTI_FUNDS
+[2018-09-25 09:20:30:150] [WARN] No configuration file was loaded! Param=STI_FUNDS_BUFFER
+[2018-09-25 09:20:30:150] [WARN] No configuration file was loaded! Param=LTI_FUNDS_BUFFER
+[2018-09-25 09:20:30:150] [WARN] No configuration file was loaded! Param=TARGET_LTI_FUNDS
+[2018-09-25 09:20:30:150] [WARN] No configuration file was loaded! Param=TARGET_STI_FUNDS
+[2018-09-25 09:20:30:150] [WARN] No configuration file was loaded! Param=ECAN_STARTING_ATOM_STI_WAGE
+[2018-09-25 09:20:30:150] [WARN] No configuration file was loaded! Param=ECAN_STARTING_ATOM_LTI_WAGE
+[2018-09-25 09:20:30:150] [WARN] No configuration file was loaded! Param=ECAN_MAX_AF_SIZE
+[2018-09-25 09:20:30:155] [INFO] [GHOST] Say: "hi there"
+[2018-09-25 09:20:30:190] [ERROR] Backtrace:
+In current input:
+    10:34 13 (_)
+In opencog/ghost/test.scm:
+     39:4 12 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17 11 (map1 (#))
+In unknown file:
+          10 (opencog-extension psi-imply (#))
+           9 (apply-smob/1 #<catch-closure 2751980>)
+           8 (apply-smob/1 #<catch-closure 2751880>)
+In opencog/ghost/terms.scm:
+   393:13  7 (ghost-execute-action . _)
+In unknown file:
+           6 (opencog-extension cog-execute! (#))
+           5 (apply-smob/1 #<catch-closure 27510c0>)
+In ice-9/eval.scm:
+   191:27  4 (_ #f)
+   223:20  3 (proc #<directory (guile-user) 2358140>)
+In unknown file:
+           2 (%resolve-variable (7 . prt-say-text) #<directory (guil…>)
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 unbound-variable (#f "Unbound …" …))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 2751040> unbound-variable …)
+
+ERROR: In procedure apply-smob/1:
+Unbound variable: prt-say-text
+ABORT: unbound-variable
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1055)
+	Stack Trace:
+	2: basic_string.h:293	  std::string::_M_data() const
+	3: Logger.cc:493	  opencog::Logger::Error::operator()(char const*, ...)
+	4: exceptions.cc:55	  opencog::StandardException::parse_error_message(char const*, __va_list_tag*, bool)
+	5: exceptions.cc:81	  opencog::StandardException::parse_error_message(char const*, char const*, __va_list_tag*, bool)
+	6: exceptions.cc:150	  opencog::RuntimeException::RuntimeException(char const*, char const*, ...)
+	7: SchemeEval.cc:1068	  opencog::SchemeEval::apply_v(std::string const&, opencog::Handle)
+	8: shared_ptr.h:449	  opencog::EvaluationLink::do_evaluate(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	9: shared_ptr_base.h:545	~__shared_count()
+	10: EvaluationLink.cc:508	  opencog::EvaluationLink::do_evaluate(opencog::AtomSpace*, opencog::Handle const&, bool)
+	11: shared_ptr_base.h:545	~__shared_count()
+	12: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	13: stl_tree.h:671	~_Rb_tree()
+	14: SchemeModule.cc:41	  opencog::FunctionWrap::as_wrapper_h_h(opencog::Handle)
+	15: shared_ptr_base.h:545	~__shared_count()
+	16: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	17: vm-engine.c:787	vm_debug_engine()
+	18: vm.c:1258	scm_call_n()
+	19: eval.c:664	scm_primitive_eval()
+	20: eval.c:696	scm_eval()
+	21: vm-engine.c:787	vm_debug_engine()
+	22: vm.c:1258	scm_call_n()
+	23: throw.c:139	catch()
+	24: SchemeEval.cc:790	  opencog::SchemeEval::do_scm_eval(scm_unused_struct*, scm_unused_struct* (*)(void*))
+	25: SchemeEval.cc:1029	  opencog::SchemeEval::do_apply_scm(std::string const&, opencog::Handle const&)
+	26: SchemeEval.cc:1081	  opencog::SchemeEval::c_wrap_apply_v(void*)
+	27: continuations.c:422	c_body()
+	28: vm-engine.c:787	vm_debug_engine()
+	29: vm.c:1258	scm_call_n()
+	30: throw.c:139	catch()
+	31: continuations.c:367	scm_i_with_continuation_barrier()
+	32: continuations.c:461	scm_c_with_continuation_barrier()
+	33: misc.c:1968	GC_call_with_stack_base()
+	34: threads.c:711	scm_with_guile()
+	35: shared_ptr_base.h:560	  std::__shared_count<(__gnu_cxx::_Lock_policy)2>::operator=(std::__shared_count<(__gnu_cxx::_Lock_policy)2> const&)
+	36: shared_ptr.h:449	  opencog::ExecutionOutputLink::do_execute(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	37: ExecutionOutputLink.cc:113	  opencog::ExecutionOutputLink::execute(opencog::AtomSpace*, bool) const
+	38: shared_ptr_base.h:545	~__shared_count()
+	39: Context.h:56	operator=()
+	40: Instantiator.cc:496	  opencog::Instantiator::walk_tree(opencog::Handle const&, bool)
+	41: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	42: shared_ptr_base.h:545	~__shared_count()
+	43: OpenPsiSCM.cc:134	  opencog::OpenPsiSCM::imply(opencog::Handle const&)
+	44: shared_ptr_base.h:545	~__shared_count()
+	45: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	46: vm-engine.c:787	vm_debug_engine()
+	47: vm.c:1258	scm_call_n()
+	48: eval.c:664	scm_primitive_eval()
+	49: eval.c:696	scm_eval()
+
+[2018-09-25 09:20:30:625] [ERROR] Backtrace:
+In current input:
+    10:34  9 (_)
+In opencog/ghost/test.scm:
+     39:4  8 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17  7 (map1 (#))
+In unknown file:
+           6 (opencog-extension psi-imply (#))
+           5 (apply-smob/1 #<catch-closure 2751980>)
+           4 (apply-smob/1 #<catch-closure 2751880>)
+In opencog/ghost/terms.scm:
+   393:13  3 (ghost-execute-action . _)
+In unknown file:
+           2 (opencog-extension cog-execute! (#))
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 C++-EXCEPTION ("cog-execute!" "…"))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 2751800> C++-EXCEPTION "…" …)
+
+ERROR: In procedure apply-smob/1:
+In procedure cog-execute!: Backtrace:
+In current input:
+    10:34 13 (_)
+In opencog/ghost/test.scm:
+     39:4 12 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17 11 (map1 (#))
+In unknown file:
+          10 (opencog-extension psi-imply (#))
+           9 (apply-smob/1 #<catch-closure 2751980>)
+           8 (apply-smob/1 #<catch-closure 2751880>)
+In opencog/ghost/terms.scm:
+   393:13  7 (ghost-execute-action . _)
+In unknown file:
+           6 (opencog-extension cog-execute! (#))
+           5 (apply-smob/1 #<catch-closure 27510c0>)
+In ice-9/eval.scm:
+   191:27  4 (_ #f)
+   223:20  3 (proc #<directory (guile-user) 2358140>)
+In unknown file:
+           2 (%resolve-variable (7 . prt-say-text) #<directory (guil…>)
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 unbound-variable (#f "Unbound …" …))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 2751040> unbound-variable …)
+
+ERROR: In procedure apply-smob/1:
+Unbound variable: prt-say-text
+ABORT: unbound-variable
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1055)
+Function args:
+((PutLink
+   (DefinedPredicateNode "Say")
+   (Node "hi there")
+)
+)
+ABORT: C++-EXCEPTION
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1068)
+	Stack Trace:
+	2: basic_string.h:293	  std::string::_M_data() const
+	3: Logger.cc:493	  opencog::Logger::Error::operator()(char const*, ...)
+	4: exceptions.cc:55	  opencog::StandardException::parse_error_message(char const*, __va_list_tag*, bool)
+	5: exceptions.cc:81	  opencog::StandardException::parse_error_message(char const*, char const*, __va_list_tag*, bool)
+	6: exceptions.cc:150	  opencog::RuntimeException::RuntimeException(char const*, char const*, ...)
+	7: SchemeEval.cc:1068	  opencog::SchemeEval::apply_v(std::string const&, opencog::Handle)
+	8: shared_ptr.h:449	  opencog::ExecutionOutputLink::do_execute(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	9: ExecutionOutputLink.cc:113	  opencog::ExecutionOutputLink::execute(opencog::AtomSpace*, bool) const
+	10: shared_ptr_base.h:545	~__shared_count()
+	11: Context.h:56	operator=()
+	12: Instantiator.cc:496	  opencog::Instantiator::walk_tree(opencog::Handle const&, bool)
+	13: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	14: shared_ptr_base.h:545	~__shared_count()
+	15: OpenPsiSCM.cc:134	  opencog::OpenPsiSCM::imply(opencog::Handle const&)
+	16: shared_ptr_base.h:545	~__shared_count()
+	17: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	18: vm-engine.c:787	vm_debug_engine()
+	19: vm.c:1258	scm_call_n()
+	20: eval.c:664	scm_primitive_eval()
+	21: eval.c:696	scm_eval()
+	22: script.c:454	scm_shell()
+	23: init.c:342	invoke_main_func()
+	24: continuations.c:422	c_body()
+	25: vm-engine.c:787	vm_regular_engine()
+	26: vm.c:1258	scm_call_n()
+	27: throw.c:139	catch()
+	28: continuations.c:367	scm_i_with_continuation_barrier()
+	29: continuations.c:461	scm_c_with_continuation_barrier()
+	30: threads.c:664	with_guile()
+	31: misc.c:1968	GC_call_with_stack_base()
+	32: threads.c:711	scm_with_guile()
+	33: init.c:328	scm_boot_guile()
+	34: guile.c:103	main()
+	35: libc-start.c:321	__libc_start_main()
+	36: [0x400995] ??() ??:0
+
+[2018-09-25 09:20:30:961] [WARN] Could not retrieve parameter URE:attention-allocation for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:20:30:961] [WARN] Could not retrieve parameter URE:FC:retry-sources for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:20:30:961] [WARN] Could not retrieve parameter URE:BC:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:20:30:961] [WARN] Could not retrieve parameter URE:BC:maximum-bit-size for rule-based system R2L-en-RuleBase. Use default value -1 instead.
+[2018-09-25 09:20:30:962] [WARN] Could not retrieve parameter URE:BC:MM:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:20:30:962] [WARN] Could not retrieve parameter URE:BC:MM:compressiveness for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:21:39:245] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 09:21:39:277] [WARN] Could not retrieve parameter URE:attention-allocation for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:21:39:277] [WARN] Could not retrieve parameter URE:FC:retry-sources for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:21:39:277] [WARN] Could not retrieve parameter URE:BC:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:21:39:277] [WARN] Could not retrieve parameter URE:BC:maximum-bit-size for rule-based system R2L-en-RuleBase. Use default value -1 instead.
+[2018-09-25 09:21:39:277] [WARN] Could not retrieve parameter URE:BC:MM:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:21:39:277] [WARN] Could not retrieve parameter URE:BC:MM:compressiveness for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:21:39:288] [WARN] No configuration file was loaded! Param=STARTING_STI_FUNDS
+[2018-09-25 09:21:39:288] [WARN] No configuration file was loaded! Param=STARTING_LTI_FUNDS
+[2018-09-25 09:21:39:288] [WARN] No configuration file was loaded! Param=STI_FUNDS_BUFFER
+[2018-09-25 09:21:39:288] [WARN] No configuration file was loaded! Param=LTI_FUNDS_BUFFER
+[2018-09-25 09:21:39:288] [WARN] No configuration file was loaded! Param=TARGET_LTI_FUNDS
+[2018-09-25 09:21:39:288] [WARN] No configuration file was loaded! Param=TARGET_STI_FUNDS
+[2018-09-25 09:21:39:288] [WARN] No configuration file was loaded! Param=ECAN_STARTING_ATOM_STI_WAGE
+[2018-09-25 09:21:39:288] [WARN] No configuration file was loaded! Param=ECAN_STARTING_ATOM_LTI_WAGE
+[2018-09-25 09:21:39:288] [WARN] No configuration file was loaded! Param=ECAN_MAX_AF_SIZE
+[2018-09-25 09:21:39:293] [INFO] [GHOST] Say: "hi there"
+[2018-09-25 09:21:39:328] [ERROR] Backtrace:
+In current input:
+    10:34 13 (_)
+In opencog/ghost/test.scm:
+     39:4 12 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17 11 (map1 (#))
+In unknown file:
+          10 (opencog-extension psi-imply (#))
+           9 (apply-smob/1 #<catch-closure 13724e0>)
+           8 (apply-smob/1 #<catch-closure 1372460>)
+In opencog/ghost/terms.scm:
+   393:13  7 (ghost-execute-action . _)
+In unknown file:
+           6 (opencog-extension cog-execute! (#))
+           5 (apply-smob/1 #<catch-closure 1372040>)
+In ice-9/eval.scm:
+   191:27  4 (_ #f)
+   223:20  3 (proc #<directory (guile-user) dd3140>)
+In unknown file:
+           2 (%resolve-variable (7 . prt-say-text) #<directory (guil…>)
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 unbound-variable (#f "Unbound …" …))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 1372000> unbound-variable …)
+
+ERROR: In procedure apply-smob/1:
+Unbound variable: prt-say-text
+ABORT: unbound-variable
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1055)
+	Stack Trace:
+	2: basic_string.h:293	  std::string::_M_data() const
+	3: Logger.cc:493	  opencog::Logger::Error::operator()(char const*, ...)
+	4: exceptions.cc:55	  opencog::StandardException::parse_error_message(char const*, __va_list_tag*, bool)
+	5: exceptions.cc:81	  opencog::StandardException::parse_error_message(char const*, char const*, __va_list_tag*, bool)
+	6: exceptions.cc:150	  opencog::RuntimeException::RuntimeException(char const*, char const*, ...)
+	7: SchemeEval.cc:1068	  opencog::SchemeEval::apply_v(std::string const&, opencog::Handle)
+	8: shared_ptr.h:449	  opencog::EvaluationLink::do_evaluate(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	9: shared_ptr_base.h:545	~__shared_count()
+	10: EvaluationLink.cc:508	  opencog::EvaluationLink::do_evaluate(opencog::AtomSpace*, opencog::Handle const&, bool)
+	11: shared_ptr_base.h:545	~__shared_count()
+	12: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	13: stl_tree.h:671	~_Rb_tree()
+	14: SchemeModule.cc:41	  opencog::FunctionWrap::as_wrapper_h_h(opencog::Handle)
+	15: shared_ptr_base.h:545	~__shared_count()
+	16: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	17: vm-engine.c:787	vm_debug_engine()
+	18: vm.c:1258	scm_call_n()
+	19: eval.c:664	scm_primitive_eval()
+	20: eval.c:696	scm_eval()
+	21: vm-engine.c:787	vm_debug_engine()
+	22: vm.c:1258	scm_call_n()
+	23: throw.c:139	catch()
+	24: SchemeEval.cc:790	  opencog::SchemeEval::do_scm_eval(scm_unused_struct*, scm_unused_struct* (*)(void*))
+	25: SchemeEval.cc:1029	  opencog::SchemeEval::do_apply_scm(std::string const&, opencog::Handle const&)
+	26: SchemeEval.cc:1081	  opencog::SchemeEval::c_wrap_apply_v(void*)
+	27: continuations.c:422	c_body()
+	28: vm-engine.c:787	vm_debug_engine()
+	29: vm.c:1258	scm_call_n()
+	30: throw.c:139	catch()
+	31: continuations.c:367	scm_i_with_continuation_barrier()
+	32: continuations.c:461	scm_c_with_continuation_barrier()
+	33: misc.c:1968	GC_call_with_stack_base()
+	34: threads.c:711	scm_with_guile()
+	35: shared_ptr_base.h:560	  std::__shared_count<(__gnu_cxx::_Lock_policy)2>::operator=(std::__shared_count<(__gnu_cxx::_Lock_policy)2> const&)
+	36: shared_ptr.h:449	  opencog::ExecutionOutputLink::do_execute(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	37: ExecutionOutputLink.cc:113	  opencog::ExecutionOutputLink::execute(opencog::AtomSpace*, bool) const
+	38: shared_ptr_base.h:545	~__shared_count()
+	39: Context.h:56	operator=()
+	40: Instantiator.cc:496	  opencog::Instantiator::walk_tree(opencog::Handle const&, bool)
+	41: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	42: shared_ptr_base.h:545	~__shared_count()
+	43: OpenPsiSCM.cc:134	  opencog::OpenPsiSCM::imply(opencog::Handle const&)
+	44: shared_ptr_base.h:545	~__shared_count()
+	45: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	46: vm-engine.c:787	vm_debug_engine()
+	47: vm.c:1258	scm_call_n()
+	48: eval.c:664	scm_primitive_eval()
+	49: eval.c:696	scm_eval()
+
+[2018-09-25 09:21:39:759] [ERROR] Backtrace:
+In current input:
+    10:34  9 (_)
+In opencog/ghost/test.scm:
+     39:4  8 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17  7 (map1 (#))
+In unknown file:
+           6 (opencog-extension psi-imply (#))
+           5 (apply-smob/1 #<catch-closure 13724e0>)
+           4 (apply-smob/1 #<catch-closure 1372460>)
+In opencog/ghost/terms.scm:
+   393:13  3 (ghost-execute-action . _)
+In unknown file:
+           2 (opencog-extension cog-execute! (#))
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 C++-EXCEPTION ("cog-execute!" "…"))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 1372420> C++-EXCEPTION "…" …)
+
+ERROR: In procedure apply-smob/1:
+In procedure cog-execute!: Backtrace:
+In current input:
+    10:34 13 (_)
+In opencog/ghost/test.scm:
+     39:4 12 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17 11 (map1 (#))
+In unknown file:
+          10 (opencog-extension psi-imply (#))
+           9 (apply-smob/1 #<catch-closure 13724e0>)
+           8 (apply-smob/1 #<catch-closure 1372460>)
+In opencog/ghost/terms.scm:
+   393:13  7 (ghost-execute-action . _)
+In unknown file:
+           6 (opencog-extension cog-execute! (#))
+           5 (apply-smob/1 #<catch-closure 1372040>)
+In ice-9/eval.scm:
+   191:27  4 (_ #f)
+   223:20  3 (proc #<directory (guile-user) dd3140>)
+In unknown file:
+           2 (%resolve-variable (7 . prt-say-text) #<directory (guil…>)
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 unbound-variable (#f "Unbound …" …))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 1372000> unbound-variable …)
+
+ERROR: In procedure apply-smob/1:
+Unbound variable: prt-say-text
+ABORT: unbound-variable
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1055)
+Function args:
+((PutLink
+   (DefinedPredicateNode "Say")
+   (Node "hi there")
+)
+)
+ABORT: C++-EXCEPTION
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1068)
+	Stack Trace:
+	2: basic_string.h:293	  std::string::_M_data() const
+	3: Logger.cc:493	  opencog::Logger::Error::operator()(char const*, ...)
+	4: exceptions.cc:55	  opencog::StandardException::parse_error_message(char const*, __va_list_tag*, bool)
+	5: exceptions.cc:81	  opencog::StandardException::parse_error_message(char const*, char const*, __va_list_tag*, bool)
+	6: exceptions.cc:150	  opencog::RuntimeException::RuntimeException(char const*, char const*, ...)
+	7: SchemeEval.cc:1068	  opencog::SchemeEval::apply_v(std::string const&, opencog::Handle)
+	8: shared_ptr.h:449	  opencog::ExecutionOutputLink::do_execute(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	9: ExecutionOutputLink.cc:113	  opencog::ExecutionOutputLink::execute(opencog::AtomSpace*, bool) const
+	10: shared_ptr_base.h:545	~__shared_count()
+	11: Context.h:56	operator=()
+	12: Instantiator.cc:496	  opencog::Instantiator::walk_tree(opencog::Handle const&, bool)
+	13: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	14: shared_ptr_base.h:545	~__shared_count()
+	15: OpenPsiSCM.cc:134	  opencog::OpenPsiSCM::imply(opencog::Handle const&)
+	16: shared_ptr_base.h:545	~__shared_count()
+	17: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	18: vm-engine.c:787	vm_debug_engine()
+	19: vm.c:1258	scm_call_n()
+	20: eval.c:664	scm_primitive_eval()
+	21: eval.c:696	scm_eval()
+	22: script.c:454	scm_shell()
+	23: init.c:342	invoke_main_func()
+	24: continuations.c:422	c_body()
+	25: vm-engine.c:787	vm_regular_engine()
+	26: vm.c:1258	scm_call_n()
+	27: throw.c:139	catch()
+	28: continuations.c:367	scm_i_with_continuation_barrier()
+	29: continuations.c:461	scm_c_with_continuation_barrier()
+	30: threads.c:664	with_guile()
+	31: misc.c:1968	GC_call_with_stack_base()
+	32: threads.c:711	scm_with_guile()
+	33: init.c:328	scm_boot_guile()
+	34: guile.c:103	main()
+	35: libc-start.c:321	__libc_start_main()
+	36: [0x400995] ??() ??:0
+
+[2018-09-25 09:21:40:106] [WARN] Could not retrieve parameter URE:attention-allocation for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:21:40:106] [WARN] Could not retrieve parameter URE:FC:retry-sources for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:21:40:106] [WARN] Could not retrieve parameter URE:BC:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:21:40:106] [WARN] Could not retrieve parameter URE:BC:maximum-bit-size for rule-based system R2L-en-RuleBase. Use default value -1 instead.
+[2018-09-25 09:21:40:106] [WARN] Could not retrieve parameter URE:BC:MM:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:21:40:106] [WARN] Could not retrieve parameter URE:BC:MM:compressiveness for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:22:35:150] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 09:22:35:181] [WARN] Could not retrieve parameter URE:attention-allocation for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:22:35:181] [WARN] Could not retrieve parameter URE:FC:retry-sources for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:22:35:181] [WARN] Could not retrieve parameter URE:BC:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:22:35:181] [WARN] Could not retrieve parameter URE:BC:maximum-bit-size for rule-based system R2L-en-RuleBase. Use default value -1 instead.
+[2018-09-25 09:22:35:181] [WARN] Could not retrieve parameter URE:BC:MM:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:22:35:181] [WARN] Could not retrieve parameter URE:BC:MM:compressiveness for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:22:35:192] [WARN] No configuration file was loaded! Param=STARTING_STI_FUNDS
+[2018-09-25 09:22:35:192] [WARN] No configuration file was loaded! Param=STARTING_LTI_FUNDS
+[2018-09-25 09:22:35:192] [WARN] No configuration file was loaded! Param=STI_FUNDS_BUFFER
+[2018-09-25 09:22:35:192] [WARN] No configuration file was loaded! Param=LTI_FUNDS_BUFFER
+[2018-09-25 09:22:35:192] [WARN] No configuration file was loaded! Param=TARGET_LTI_FUNDS
+[2018-09-25 09:22:35:192] [WARN] No configuration file was loaded! Param=TARGET_STI_FUNDS
+[2018-09-25 09:22:35:192] [WARN] No configuration file was loaded! Param=ECAN_STARTING_ATOM_STI_WAGE
+[2018-09-25 09:22:35:192] [WARN] No configuration file was loaded! Param=ECAN_STARTING_ATOM_LTI_WAGE
+[2018-09-25 09:22:35:192] [WARN] No configuration file was loaded! Param=ECAN_MAX_AF_SIZE
+[2018-09-25 09:22:35:197] [INFO] [GHOST] Say: "hi there"
+[2018-09-25 09:22:35:234] [ERROR] Backtrace:
+In current input:
+    10:34 13 (_)
+In opencog/ghost/test.scm:
+     39:4 12 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17 11 (map1 (#))
+In unknown file:
+          10 (opencog-extension psi-imply (#))
+           9 (apply-smob/1 #<catch-closure 1653480>)
+           8 (apply-smob/1 #<catch-closure 1653400>)
+In opencog/ghost/terms.scm:
+   393:13  7 (ghost-execute-action . _)
+In unknown file:
+           6 (opencog-extension cog-execute! (#))
+           5 (apply-smob/1 #<catch-closure 1653020>)
+In ice-9/eval.scm:
+   191:27  4 (_ #f)
+   223:20  3 (proc #<directory (guile-user) 133b140>)
+In unknown file:
+           2 (%resolve-variable (7 . prt-say-text) #<directory (guil…>)
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 unbound-variable (#f "Unbound …" …))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 1658e80> unbound-variable …)
+
+ERROR: In procedure apply-smob/1:
+Unbound variable: prt-say-text
+ABORT: unbound-variable
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1055)
+	Stack Trace:
+	2: basic_string.h:293	  std::string::_M_data() const
+	3: Logger.cc:493	  opencog::Logger::Error::operator()(char const*, ...)
+	4: exceptions.cc:55	  opencog::StandardException::parse_error_message(char const*, __va_list_tag*, bool)
+	5: exceptions.cc:81	  opencog::StandardException::parse_error_message(char const*, char const*, __va_list_tag*, bool)
+	6: exceptions.cc:150	  opencog::RuntimeException::RuntimeException(char const*, char const*, ...)
+	7: SchemeEval.cc:1068	  opencog::SchemeEval::apply_v(std::string const&, opencog::Handle)
+	8: shared_ptr.h:449	  opencog::EvaluationLink::do_evaluate(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	9: shared_ptr_base.h:545	~__shared_count()
+	10: EvaluationLink.cc:508	  opencog::EvaluationLink::do_evaluate(opencog::AtomSpace*, opencog::Handle const&, bool)
+	11: shared_ptr_base.h:545	~__shared_count()
+	12: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	13: stl_tree.h:671	~_Rb_tree()
+	14: SchemeModule.cc:41	  opencog::FunctionWrap::as_wrapper_h_h(opencog::Handle)
+	15: shared_ptr_base.h:545	~__shared_count()
+	16: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	17: vm-engine.c:787	vm_debug_engine()
+	18: vm.c:1258	scm_call_n()
+	19: eval.c:664	scm_primitive_eval()
+	20: eval.c:696	scm_eval()
+	21: vm-engine.c:787	vm_debug_engine()
+	22: vm.c:1258	scm_call_n()
+	23: throw.c:139	catch()
+	24: SchemeEval.cc:790	  opencog::SchemeEval::do_scm_eval(scm_unused_struct*, scm_unused_struct* (*)(void*))
+	25: SchemeEval.cc:1029	  opencog::SchemeEval::do_apply_scm(std::string const&, opencog::Handle const&)
+	26: SchemeEval.cc:1081	  opencog::SchemeEval::c_wrap_apply_v(void*)
+	27: continuations.c:422	c_body()
+	28: vm-engine.c:787	vm_debug_engine()
+	29: vm.c:1258	scm_call_n()
+	30: throw.c:139	catch()
+	31: continuations.c:367	scm_i_with_continuation_barrier()
+	32: continuations.c:461	scm_c_with_continuation_barrier()
+	33: misc.c:1968	GC_call_with_stack_base()
+	34: threads.c:711	scm_with_guile()
+	35: shared_ptr_base.h:560	  std::__shared_count<(__gnu_cxx::_Lock_policy)2>::operator=(std::__shared_count<(__gnu_cxx::_Lock_policy)2> const&)
+	36: shared_ptr.h:449	  opencog::ExecutionOutputLink::do_execute(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	37: ExecutionOutputLink.cc:113	  opencog::ExecutionOutputLink::execute(opencog::AtomSpace*, bool) const
+	38: shared_ptr_base.h:545	~__shared_count()
+	39: Context.h:56	operator=()
+	40: Instantiator.cc:496	  opencog::Instantiator::walk_tree(opencog::Handle const&, bool)
+	41: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	42: shared_ptr_base.h:545	~__shared_count()
+	43: OpenPsiSCM.cc:134	  opencog::OpenPsiSCM::imply(opencog::Handle const&)
+	44: shared_ptr_base.h:545	~__shared_count()
+	45: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	46: vm-engine.c:787	vm_debug_engine()
+	47: vm.c:1258	scm_call_n()
+	48: eval.c:664	scm_primitive_eval()
+	49: eval.c:696	scm_eval()
+
+[2018-09-25 09:22:35:666] [ERROR] Backtrace:
+In current input:
+    10:34  9 (_)
+In opencog/ghost/test.scm:
+     39:4  8 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17  7 (map1 (#))
+In unknown file:
+           6 (opencog-extension psi-imply (#))
+           5 (apply-smob/1 #<catch-closure 1653480>)
+           4 (apply-smob/1 #<catch-closure 1653400>)
+In opencog/ghost/terms.scm:
+   393:13  3 (ghost-execute-action . _)
+In unknown file:
+           2 (opencog-extension cog-execute! (#))
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 C++-EXCEPTION ("cog-execute!" "…"))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 16533c0> C++-EXCEPTION "…" …)
+
+ERROR: In procedure apply-smob/1:
+In procedure cog-execute!: Backtrace:
+In current input:
+    10:34 13 (_)
+In opencog/ghost/test.scm:
+     39:4 12 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17 11 (map1 (#))
+In unknown file:
+          10 (opencog-extension psi-imply (#))
+           9 (apply-smob/1 #<catch-closure 1653480>)
+           8 (apply-smob/1 #<catch-closure 1653400>)
+In opencog/ghost/terms.scm:
+   393:13  7 (ghost-execute-action . _)
+In unknown file:
+           6 (opencog-extension cog-execute! (#))
+           5 (apply-smob/1 #<catch-closure 1653020>)
+In ice-9/eval.scm:
+   191:27  4 (_ #f)
+   223:20  3 (proc #<directory (guile-user) 133b140>)
+In unknown file:
+           2 (%resolve-variable (7 . prt-say-text) #<directory (guil…>)
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 unbound-variable (#f "Unbound …" …))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 1658e80> unbound-variable …)
+
+ERROR: In procedure apply-smob/1:
+Unbound variable: prt-say-text
+ABORT: unbound-variable
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1055)
+Function args:
+((PutLink
+   (DefinedPredicateNode "Say")
+   (Node "hi there")
+)
+)
+ABORT: C++-EXCEPTION
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1068)
+	Stack Trace:
+	2: basic_string.h:293	  std::string::_M_data() const
+	3: Logger.cc:493	  opencog::Logger::Error::operator()(char const*, ...)
+	4: exceptions.cc:55	  opencog::StandardException::parse_error_message(char const*, __va_list_tag*, bool)
+	5: exceptions.cc:81	  opencog::StandardException::parse_error_message(char const*, char const*, __va_list_tag*, bool)
+	6: exceptions.cc:150	  opencog::RuntimeException::RuntimeException(char const*, char const*, ...)
+	7: SchemeEval.cc:1068	  opencog::SchemeEval::apply_v(std::string const&, opencog::Handle)
+	8: shared_ptr.h:449	  opencog::ExecutionOutputLink::do_execute(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	9: ExecutionOutputLink.cc:113	  opencog::ExecutionOutputLink::execute(opencog::AtomSpace*, bool) const
+	10: shared_ptr_base.h:545	~__shared_count()
+	11: Context.h:56	operator=()
+	12: Instantiator.cc:496	  opencog::Instantiator::walk_tree(opencog::Handle const&, bool)
+	13: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	14: shared_ptr_base.h:545	~__shared_count()
+	15: OpenPsiSCM.cc:134	  opencog::OpenPsiSCM::imply(opencog::Handle const&)
+	16: shared_ptr_base.h:545	~__shared_count()
+	17: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	18: vm-engine.c:787	vm_debug_engine()
+	19: vm.c:1258	scm_call_n()
+	20: eval.c:664	scm_primitive_eval()
+	21: eval.c:696	scm_eval()
+	22: script.c:454	scm_shell()
+	23: init.c:342	invoke_main_func()
+	24: continuations.c:422	c_body()
+	25: vm-engine.c:787	vm_regular_engine()
+	26: vm.c:1258	scm_call_n()
+	27: throw.c:139	catch()
+	28: continuations.c:367	scm_i_with_continuation_barrier()
+	29: continuations.c:461	scm_c_with_continuation_barrier()
+	30: threads.c:664	with_guile()
+	31: misc.c:1968	GC_call_with_stack_base()
+	32: threads.c:711	scm_with_guile()
+	33: init.c:328	scm_boot_guile()
+	34: guile.c:103	main()
+	35: libc-start.c:321	__libc_start_main()
+	36: [0x400995] ??() ??:0
+
+[2018-09-25 09:22:36:034] [WARN] Could not retrieve parameter URE:attention-allocation for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:22:36:034] [WARN] Could not retrieve parameter URE:FC:retry-sources for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:22:36:034] [WARN] Could not retrieve parameter URE:BC:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:22:36:034] [WARN] Could not retrieve parameter URE:BC:maximum-bit-size for rule-based system R2L-en-RuleBase. Use default value -1 instead.
+[2018-09-25 09:22:36:035] [WARN] Could not retrieve parameter URE:BC:MM:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:22:36:035] [WARN] Could not retrieve parameter URE:BC:MM:compressiveness for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:22:55:475] [WARN] [GHOST] Did you forget to link a goal to the rule?
+[2018-09-25 09:22:55:512] [WARN] Could not retrieve parameter URE:attention-allocation for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:22:55:513] [WARN] Could not retrieve parameter URE:FC:retry-sources for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:22:55:513] [WARN] Could not retrieve parameter URE:BC:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:22:55:513] [WARN] Could not retrieve parameter URE:BC:maximum-bit-size for rule-based system R2L-en-RuleBase. Use default value -1 instead.
+[2018-09-25 09:22:55:513] [WARN] Could not retrieve parameter URE:BC:MM:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:22:55:514] [WARN] Could not retrieve parameter URE:BC:MM:compressiveness for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:22:55:525] [WARN] No configuration file was loaded! Param=STARTING_STI_FUNDS
+[2018-09-25 09:22:55:525] [WARN] No configuration file was loaded! Param=STARTING_LTI_FUNDS
+[2018-09-25 09:22:55:525] [WARN] No configuration file was loaded! Param=STI_FUNDS_BUFFER
+[2018-09-25 09:22:55:525] [WARN] No configuration file was loaded! Param=LTI_FUNDS_BUFFER
+[2018-09-25 09:22:55:525] [WARN] No configuration file was loaded! Param=TARGET_LTI_FUNDS
+[2018-09-25 09:22:55:525] [WARN] No configuration file was loaded! Param=TARGET_STI_FUNDS
+[2018-09-25 09:22:55:525] [WARN] No configuration file was loaded! Param=ECAN_STARTING_ATOM_STI_WAGE
+[2018-09-25 09:22:55:525] [WARN] No configuration file was loaded! Param=ECAN_STARTING_ATOM_LTI_WAGE
+[2018-09-25 09:22:55:525] [WARN] No configuration file was loaded! Param=ECAN_MAX_AF_SIZE
+[2018-09-25 09:22:55:530] [INFO] [GHOST] Say: "hi there"
+[2018-09-25 09:22:55:563] [ERROR] Backtrace:
+In current input:
+    10:34 13 (_)
+In opencog/ghost/test.scm:
+     39:4 12 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17 11 (map1 (#))
+In unknown file:
+          10 (opencog-extension psi-imply (#))
+           9 (apply-smob/1 #<catch-closure 2717140>)
+           8 (apply-smob/1 #<catch-closure 27170c0>)
+In opencog/ghost/terms.scm:
+   393:13  7 (ghost-execute-action . _)
+In unknown file:
+           6 (opencog-extension cog-execute! (#))
+           5 (apply-smob/1 #<catch-closure 271ece0>)
+In ice-9/eval.scm:
+   191:27  4 (_ #f)
+   223:20  3 (proc #<directory (guile-user) 212e140>)
+In unknown file:
+           2 (%resolve-variable (7 . prt-say-text) #<directory (guil…>)
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 unbound-variable (#f "Unbound …" …))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 271eca0> unbound-variable …)
+
+ERROR: In procedure apply-smob/1:
+Unbound variable: prt-say-text
+ABORT: unbound-variable
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1055)
+	Stack Trace:
+	2: basic_string.h:293	  std::string::_M_data() const
+	3: Logger.cc:493	  opencog::Logger::Error::operator()(char const*, ...)
+	4: exceptions.cc:55	  opencog::StandardException::parse_error_message(char const*, __va_list_tag*, bool)
+	5: exceptions.cc:81	  opencog::StandardException::parse_error_message(char const*, char const*, __va_list_tag*, bool)
+	6: exceptions.cc:150	  opencog::RuntimeException::RuntimeException(char const*, char const*, ...)
+	7: SchemeEval.cc:1068	  opencog::SchemeEval::apply_v(std::string const&, opencog::Handle)
+	8: shared_ptr.h:449	  opencog::EvaluationLink::do_evaluate(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	9: shared_ptr_base.h:545	~__shared_count()
+	10: EvaluationLink.cc:508	  opencog::EvaluationLink::do_evaluate(opencog::AtomSpace*, opencog::Handle const&, bool)
+	11: shared_ptr_base.h:545	~__shared_count()
+	12: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	13: stl_tree.h:671	~_Rb_tree()
+	14: SchemeModule.cc:41	  opencog::FunctionWrap::as_wrapper_h_h(opencog::Handle)
+	15: shared_ptr_base.h:545	~__shared_count()
+	16: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	17: vm-engine.c:787	vm_debug_engine()
+	18: vm.c:1258	scm_call_n()
+	19: eval.c:664	scm_primitive_eval()
+	20: eval.c:696	scm_eval()
+	21: vm-engine.c:787	vm_debug_engine()
+	22: vm.c:1258	scm_call_n()
+	23: throw.c:139	catch()
+	24: SchemeEval.cc:790	  opencog::SchemeEval::do_scm_eval(scm_unused_struct*, scm_unused_struct* (*)(void*))
+	25: SchemeEval.cc:1029	  opencog::SchemeEval::do_apply_scm(std::string const&, opencog::Handle const&)
+	26: SchemeEval.cc:1081	  opencog::SchemeEval::c_wrap_apply_v(void*)
+	27: continuations.c:422	c_body()
+	28: vm-engine.c:787	vm_debug_engine()
+	29: vm.c:1258	scm_call_n()
+	30: throw.c:139	catch()
+	31: continuations.c:367	scm_i_with_continuation_barrier()
+	32: continuations.c:461	scm_c_with_continuation_barrier()
+	33: misc.c:1968	GC_call_with_stack_base()
+	34: threads.c:711	scm_with_guile()
+	35: shared_ptr_base.h:560	  std::__shared_count<(__gnu_cxx::_Lock_policy)2>::operator=(std::__shared_count<(__gnu_cxx::_Lock_policy)2> const&)
+	36: shared_ptr.h:449	  opencog::ExecutionOutputLink::do_execute(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	37: ExecutionOutputLink.cc:113	  opencog::ExecutionOutputLink::execute(opencog::AtomSpace*, bool) const
+	38: shared_ptr_base.h:545	~__shared_count()
+	39: Context.h:56	operator=()
+	40: Instantiator.cc:496	  opencog::Instantiator::walk_tree(opencog::Handle const&, bool)
+	41: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	42: shared_ptr_base.h:545	~__shared_count()
+	43: OpenPsiSCM.cc:134	  opencog::OpenPsiSCM::imply(opencog::Handle const&)
+	44: shared_ptr_base.h:545	~__shared_count()
+	45: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	46: vm-engine.c:787	vm_debug_engine()
+	47: vm.c:1258	scm_call_n()
+	48: eval.c:664	scm_primitive_eval()
+	49: eval.c:696	scm_eval()
+
+[2018-09-25 09:22:55:995] [ERROR] Backtrace:
+In current input:
+    10:34  9 (_)
+In opencog/ghost/test.scm:
+     39:4  8 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17  7 (map1 (#))
+In unknown file:
+           6 (opencog-extension psi-imply (#))
+           5 (apply-smob/1 #<catch-closure 2717140>)
+           4 (apply-smob/1 #<catch-closure 27170c0>)
+In opencog/ghost/terms.scm:
+   393:13  3 (ghost-execute-action . _)
+In unknown file:
+           2 (opencog-extension cog-execute! (#))
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 C++-EXCEPTION ("cog-execute!" "…"))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 2717080> C++-EXCEPTION "…" …)
+
+ERROR: In procedure apply-smob/1:
+In procedure cog-execute!: Backtrace:
+In current input:
+    10:34 13 (_)
+In opencog/ghost/test.scm:
+     39:4 12 (test-ghost _)
+In srfi/srfi-1.scm:
+   592:17 11 (map1 (#))
+In unknown file:
+          10 (opencog-extension psi-imply (#))
+           9 (apply-smob/1 #<catch-closure 2717140>)
+           8 (apply-smob/1 #<catch-closure 27170c0>)
+In opencog/ghost/terms.scm:
+   393:13  7 (ghost-execute-action . _)
+In unknown file:
+           6 (opencog-extension cog-execute! (#))
+           5 (apply-smob/1 #<catch-closure 271ece0>)
+In ice-9/eval.scm:
+   191:27  4 (_ #f)
+   223:20  3 (proc #<directory (guile-user) 212e140>)
+In unknown file:
+           2 (%resolve-variable (7 . prt-say-text) #<directory (guil…>)
+In ice-9/boot-9.scm:
+   751:25  1 (dispatch-exception 0 unbound-variable (#f "Unbound …" …))
+In unknown file:
+           0 (apply-smob/1 #<catch-closure 271eca0> unbound-variable …)
+
+ERROR: In procedure apply-smob/1:
+Unbound variable: prt-say-text
+ABORT: unbound-variable
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1055)
+Function args:
+((PutLink
+   (DefinedPredicateNode "Say")
+   (Node "hi there")
+)
+)
+ABORT: C++-EXCEPTION
+ (/home/brook/Documents/OPENCOG/atomspace/opencog/guile/SchemeEval.cc:1068)
+	Stack Trace:
+	2: basic_string.h:293	  std::string::_M_data() const
+	3: Logger.cc:493	  opencog::Logger::Error::operator()(char const*, ...)
+	4: exceptions.cc:55	  opencog::StandardException::parse_error_message(char const*, __va_list_tag*, bool)
+	5: exceptions.cc:81	  opencog::StandardException::parse_error_message(char const*, char const*, __va_list_tag*, bool)
+	6: exceptions.cc:150	  opencog::RuntimeException::RuntimeException(char const*, char const*, ...)
+	7: SchemeEval.cc:1068	  opencog::SchemeEval::apply_v(std::string const&, opencog::Handle)
+	8: shared_ptr.h:449	  opencog::ExecutionOutputLink::do_execute(opencog::AtomSpace*, opencog::Handle const&, opencog::Handle const&, bool)
+	9: ExecutionOutputLink.cc:113	  opencog::ExecutionOutputLink::execute(opencog::AtomSpace*, bool) const
+	10: shared_ptr_base.h:545	~__shared_count()
+	11: Context.h:56	operator=()
+	12: Instantiator.cc:496	  opencog::Instantiator::walk_tree(opencog::Handle const&, bool)
+	13: Instantiator.cc:545	  opencog::Instantiator::instantiate(opencog::Handle const&, std::map<opencog::Handle, opencog::Handle, std::less<opencog::Handle>, std::allocator<std::pair<opencog::Handle const, opencog::Handle> > > const&, bool)
+	14: shared_ptr_base.h:545	~__shared_count()
+	15: OpenPsiSCM.cc:134	  opencog::OpenPsiSCM::imply(opencog::Handle const&)
+	16: shared_ptr_base.h:545	~__shared_count()
+	17: SchemePrimitive.cc:162	  opencog::PrimitiveEnviron::do_call(scm_unused_struct*, scm_unused_struct*)
+	18: vm-engine.c:787	vm_debug_engine()
+	19: vm.c:1258	scm_call_n()
+	20: eval.c:664	scm_primitive_eval()
+	21: eval.c:696	scm_eval()
+	22: script.c:454	scm_shell()
+	23: init.c:342	invoke_main_func()
+	24: continuations.c:422	c_body()
+	25: vm-engine.c:787	vm_regular_engine()
+	26: vm.c:1258	scm_call_n()
+	27: throw.c:139	catch()
+	28: continuations.c:367	scm_i_with_continuation_barrier()
+	29: continuations.c:461	scm_c_with_continuation_barrier()
+	30: threads.c:664	with_guile()
+	31: misc.c:1968	GC_call_with_stack_base()
+	32: threads.c:711	scm_with_guile()
+	33: init.c:328	scm_boot_guile()
+	34: guile.c:103	main()
+	35: libc-start.c:321	__libc_start_main()
+	36: [0x400995] ??() ??:0
+
+[2018-09-25 09:22:56:351] [WARN] Could not retrieve parameter URE:attention-allocation for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:22:56:351] [WARN] Could not retrieve parameter URE:FC:retry-sources for rule-based system R2L-en-RuleBase. Use default value 1 instead.
+[2018-09-25 09:22:56:352] [WARN] Could not retrieve parameter URE:BC:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:22:56:352] [WARN] Could not retrieve parameter URE:BC:maximum-bit-size for rule-based system R2L-en-RuleBase. Use default value -1 instead.
+[2018-09-25 09:22:56:352] [WARN] Could not retrieve parameter URE:BC:MM:complexity-penalty for rule-based system R2L-en-RuleBase. Use default value 0 instead.
+[2018-09-25 09:22:56:352] [WARN] Could not retrieve parameter URE:BC:MM:compressiveness for rule-based system R2L-en-RuleBase. Use default value 1 instead.

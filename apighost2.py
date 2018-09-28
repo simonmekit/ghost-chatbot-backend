@@ -1,138 +1,107 @@
+__author__ = 'simon, brook, and amante'
+
 import subprocess as sp
-import os
 
 class whole:
     def __init__(self):
-        self.isRelex = False
-        self.takeInput()
+        self.all_rule = ''
+        self.running_times = 0
+        self.training_loc = "/home/aman/files.ghost"
+        self.question_file = open("/home/aman/Questionfile.txt", "a+")
 
     def takeInput(self):
-        if (self.isRelex == False):
-            self.startRelex()
-            self.isRelex = True
+        self.displayPopen()
+        while True:
+            self.running_times = self.running_times + 1
+            value = input("Please enter your rule or '(quit)' to exit: ")
+            if value == "(quit)":
+                found = input("Are you sure? Y or N: ")
+                if found == "Y" or found == "y":
+                    self.question_file.close()
+                    raise SystemExit
+                elif found == "N" or found == "n":
+                    continue
+            self.ghostRule(value.encode())
 
-        value = raw_input("Please enter your rule or '(quit)' to exit: ")
-        if (value == "(quit)"):
-            found = raw_input("Are you sure? Y or N: ")
-            if found == "Y" or found == "y":
-                raise SystemExit
-            elif found == "N" or found == "n":
-                self.takeInput()
-        print(self.startGuile(value.decode()))
-        self.takeInput()
-
-    def startRelex(self):
-        print("-------opening relex server------------")
-        # sp.call('./opencog-server.sh', cwd='/home/abeni/relex')
-        os.chdir("/home/cogbot-developer/hansonrobotics/OPENCOG/relex/")
-
-        os.system("gnome-terminal -e 'bash -c \"./opencog-server.sh; exec bash\"'")
-
-        # if it is using docker
-        # subprocess.call('sudo docker run -it -p 4444:4444 opencog/relex /bin/sh opencog-server.sh', shell=True)
-
-    def startGuile(self, value):
-        # def startGuile():
-        print("--------------------starting GUILE--------------")
-        proc = sp.Popen('guile', stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.STDOUT, shell=True)
-
-        # a = proc.communicate(input=None)
-        a = proc.stdout.readline()
-        # print(type(a))
-        # print(a)
-
-        if ("GNU Guile" in a):
-            print("guile successfully opened")
-        else:
-            print("there is a problem with guile")
+    def displayPopen(self):
+        disp = sp.Popen('guile', stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.STDOUT)
+        try:
+            a = disp.stdout.readline()
+            b = []
+            if "GNU Guile" in a.decode():
+                if self.running_times == 0:
+                    print("guile successfully opened")
+            else:
+                print("there is a problem with guile")
+        except Exception as e:
+            print("Error Occured in starting guile: ", e)
 
         try:
-            module = b"""
-						(use-modules(opencog)
-						(opencog nlp)
-						(opencog nlp relex2logic)
-						(opencog openpsi)
-						(opencog ghost) 
-						(opencog ghost procedures))"""
-            proc.stdin.write(module)
-        # print(type(h))
-        # print("Modules successfully loaded")
-        except ValueError:
-            print("problem occured while trying to load modules ")
+            mod = ""
+            with open('/home/aman/module.txt', 'r') as f:
+                for line in f:
+                    mod = mod + line
+                modtobyte = mod.encode()
+                disp.stdin.write(modtobyte)
+                if self.running_times == 0:
+                    print("Modules successfully loaded from file")
+        except Exception as e:
+            print("Error Occured in loading module from file: ", e)
 
         try:
-            code = b"""
-					(ghost-parse "u: (hello) hi there")
-					"""
-            proc.stdin.write(code)
-            test = b"""
-					(map cog-name (test-ghost "hello"))
-					"""
-            # a1 = test.decode()
-            # a2 = a1.encode()
-            # #print(type(a1))
-            # #print(type(a2))
-            g = proc.stdin.write(test)
+            code = '(ghost-parse-file \"{}\")'.format(self.training_loc)
+            disp.stdin.write(code.encode())
+            if self.running_times == 0:
+                print("data successfully loaded to robot")
+        except Exception as e:
+            print("Error Occured in testing rule: ", e)
 
-            print("Test completed successfully!")
-
-
-        except:
-            print("Problem occured on test.")
-        # print(proc.communicate())
-
+        list_of_rules = self.all_rule.split('\n')
+        aa = len(list_of_rules)
         try:
-            proc.stdin.write(value)
-            print(proc.communicate())
-        # b = proc.stdout.readline()
-        # print(b)
-
-        # r = b"""
-        #   		(map cog-name (test-ghost "brook"))
-        #   		"""
-        # proc.stdin.write(r)
-        except:
-            print("Error while executing code!")
-
-    # print(proc.communicate())
-
-    """
-    		this is the function that accepts rule from user and communicate it with the process
-    	"""
+            i = 0
+            while i <= aa - 2:
+                if i == aa - 2:
+                    stdou, stder = disp.communicate(input=list_of_rules[aa - 2].encode())
+                    result_to_list = stdou.decode().split('\n')
+                    answer = []
+                    index = 0
+                    while index < len(result_to_list):
+                        if "[INFO] [GHOST] Say:" in result_to_list[index] \
+                                or "[INFO] [GHOST] Say:" in result_to_list[index] \
+                                or "<unnamed port>" in result_to_list[index] \
+                                or "<unspecified>" in result_to_list[index] \
+                                or "ERROR: In procedure module-lookup: Unbound variable:" in result_to_list[index]:
+                            answer.append(result_to_list[index])
+                        index += 1
+                    print(answer[len(answer) - 1])
+                else:
+                    disp.stdin.write(list_of_rules[i].encode())
+                i = i + 1
+        except Exception as e:
+            print("Error Occured in displaying result: ", e)
 
     def ghostRule(self, rule):
+        '''
+        what the user can do is only test_ghost from the rule of ghost
+        if he want ghost-parse or ghost-parse file this means obviously he is a programmer so he can hopefully
+        edit the code means changing the file locations or adding the rule to where the file is avialabled
+        '''
         try:
-            # storing all the rule entered by the user to a global variable called all_rule
             ruletostring = rule.decode()
             if ((ruletostring == '')):
-                # print("Please enter a rule")
                 pass
             else:
-                # if(str(rule)[2:3] != "("):
-                # 	print("warning: possibly unbound variable: ", str(rule)[2:])
-                if (('(ghost-parse-file') in ruletostring
-                        or ('(ghost-parse') in ruletostring):
-                    self.all_rule = self.all_rule + ruletostring + '\n'
-                    # creating displayPopen method to get the asked result
-                    self.displayPopen()
-                else:
-                    action = '(map cog-name (test-ghost \"{}\"))'.format(ruletostring)
-                    self.all_rule = self.all_rule + action + '\n'
-                    # creating displayPopen method to get the asked result
-                    self.displayPopen()
+                action = '(map cog-name (test-ghost \"{}\"))'.format(ruletostring)
+                self.all_rule = self.all_rule + action + '\n'
+                self.question_file.write(action)
+                self.question_file.write('\n')
+                self.displayPopen()
+
         except Exception as e:
             print("Error Occured in writing rule: ", e)
 
 
-# isRelex = False
 print("-------------Welcome-------------")
 one = whole()
-
-# def main():
-#   startRelex()
-# 	# startGuile()
-#  	takeInput()
-
-# if __name__ == '__main__':
-#     main()
-
+one.takeInput()

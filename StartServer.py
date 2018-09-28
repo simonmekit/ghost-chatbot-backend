@@ -1,4 +1,4 @@
-import subprocess as sp
+import subprocess as sub
 
 
 
@@ -12,7 +12,7 @@ class Relex:
         if not self.isRelex:
             print("----------opening relex server------------")
             try:
-                sp.call("./opencog-server.sh", cwd="/home/brook/Documents/relex/")
+                sub.call("./opencog-server.sh", cwd="/home/brook/Documents/relex/",shell=False)
                 print("Relex Server opened successfully")
                 self.isRelex = True
             except ValueError as e:

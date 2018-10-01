@@ -4,10 +4,11 @@ import subprocess as sp
 
 class whole:
     def __init__(self):
-        self.all_rule = ''
+        self.all_rule = []
+        self.all_answer = []
         self.running_times = 0
-        self.training_loc = "/home/aman/files.ghost"
-        self.question_file = open("/home/aman/Questionfile.txt", "a+")
+        self.training_loc = "files.ghost"
+        self.question_file = open("Questionfile.txt", "a+")
 
     def takeInput(self):
         self.displayPopen()
@@ -38,7 +39,7 @@ class whole:
 
         try:
             mod = ""
-            with open('/home/aman/module.txt', 'r') as f:
+            with open('module.txt', 'r') as f:
                 for line in f:
                     mod = mod + line
                 modtobyte = mod.encode()
@@ -56,7 +57,7 @@ class whole:
         except Exception as e:
             print("Error Occured in testing rule: ", e)
 
-        list_of_rules = self.all_rule.split('\n')
+        list_of_rules = self.all_rule
         aa = len(list_of_rules)
         try:
             i = 0
@@ -74,7 +75,16 @@ class whole:
                                 or "ERROR: In procedure module-lookup: Unbound variable:" in result_to_list[index]:
                             answer.append(result_to_list[index])
                         index += 1
-                    print(answer[len(answer) - 1])
+                    self.all_answer.append(answer[-1])
+                    self.all_answer.append("\n")
+                    #print(answer[-1])
+                    print(self.all_answer[-2])
+
+                    print(self.all_rule)
+                    print(self.all_answer)
+                    # for i, j in zip(self.all_rule, self.all_rule):
+                    #     print(i, j)
+
                 else:
                     disp.stdin.write(list_of_rules[i].encode())
                 i = i + 1
@@ -93,7 +103,9 @@ class whole:
                 pass
             else:
                 action = '(map cog-name (test-ghost \"{}\"))'.format(ruletostring)
-                self.all_rule = self.all_rule + action + '\n'
+                #self.all_rule = self.all_rule + action + '\n'
+                self.all_rule.append(action)
+                self.all_rule.append("\n")
                 self.question_file.write(action)
                 self.question_file.write('\n')
                 self.displayPopen()

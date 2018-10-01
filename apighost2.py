@@ -58,6 +58,7 @@ class whole:
 
         list_of_rules = self.all_rule
         aa = len(list_of_rules)
+        print(aa)
         try:
             i = 0
             while i <= aa - 2:
@@ -113,8 +114,8 @@ class whole:
 
             else:
                 action = '(map cog-name (test-ghost \"{}\"))'.format(ruletostring)
-                self.all_rule.append("\n")
                 self.all_rule.append(action)
+                self.all_rule.append("\n")
                 self.question_file.write(action)
                 self.question_file.write('\n')
                 self.displayPopen()

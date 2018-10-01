@@ -1,4 +1,3 @@
-
 import subprocess as sp
 
 class whole:
@@ -6,7 +5,6 @@ class whole:
         self.all_rule = []
         self.all_answer = []
         self.running_times = 0
-        self.training_loc = "files/files.ghost"
         self.question_file = open("files/cache.txt", "a+")
 
     def takeInput(self):
@@ -27,7 +25,6 @@ class whole:
         disp = sp.Popen('guile', stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.STDOUT)
         try:
             a = disp.stdout.readline()
-            b = []
             if "GNU Guile" in a.decode():
                 if self.running_times == 0:
                     print("guile successfully opened")
@@ -48,10 +45,10 @@ class whole:
         except Exception as e:
             print("Error Occured in loading module from file: ", e)
         try:
-            code = '(ghost-parse-file \"{}\")'.format(self.training_loc)
-            disp.stdin.write(code.encode())
+            hello = '(ghost-parse "u: (hi robot) hello human")'
+            disp.stdin.write(hello.encode())
             if self.running_times == 0:
-                print("data successfully loaded to robot")
+                print("guile tested successfully")
         except Exception as e:
             print("Error Occured in testing rule: ", e)
 
@@ -63,11 +60,11 @@ class whole:
                 if i == aa - 2:
                     stdou, stder = disp.communicate(input=list_of_rules[aa - 2].encode())
                     result_to_list = stdou.decode().split('\n')
+
                     answer = []
                     index = 0
                     while index < len(result_to_list):
-                        if "[INFO] [GHOST] Say:" in result_to_list[index] \
-                                or "[INFO] [GHOST] Say:" in result_to_list[index] \
+                        if "[GHOST]" in result_to_list[index] \
                                 or "<unnamed port>" in result_to_list[index] \
                                 or "<unspecified>" in result_to_list[index] \
                                 or "ERROR: In procedure module-lookup: Unbound variable:" in result_to_list[index]:
@@ -83,16 +80,12 @@ class whole:
             print("Error Occured in displaying result: ", e)
 
     def ghostRule(self, rule):
-        '''
-        what the user can do is only test_ghost from the rule of ghost
-        if he want ghost-parse or ghost-parse file this means obviously he is a programmer so he can hopefully
-        edit the code means changing the file locations or adding the rule to where the file is avialabled
-        '''
         try:
             ruletostring = rule.decode()
             if ((ruletostring == '')):
                 pass
-            elif 'ghost-parse-file' or 'ghost-parse' in ruletostring:
+            elif '(ghost-parse-file' in ruletostring \
+                    or '(ghost-parse' in ruletostring:
                 self.all_rule.append(ruletostring)
                 self.all_rule.append("\n")
                 self.question_file.write(ruletostring)
@@ -105,6 +98,7 @@ class whole:
                 self.question_file.write(action)
                 self.question_file.write('\n')
                 self.displayPopen()
+
         except Exception as e:
             print("Error Occured in writing rule: ", e)
 

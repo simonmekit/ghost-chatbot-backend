@@ -4,6 +4,7 @@ import subprocess as sp
 
 class Relex:
     def __init__(self):
+        # change your relex server location here
         self.relex_location = "/home/aman/relex"
         self.isRelex = False
         self.startRelex()

@@ -42,3 +42,8 @@
 (ghost-parse "u: (
 (ghost-parse "u: (hello) yes")
 (map cog-name (test-ghost "hello"))
+(map cog-name (test-ghost "hi robot"))
+(map cog-name (test-ghost "hi robit"))
+(map cog-name (test-ghost "hi robot"))
+(map cog-name (test-ghost "how are you"))
+(map cog-name (test-ghost "Im good"))

@@ -1,47 +1,29 @@
-# ghost-chatbot-backend
+# ghost-chatbot-Api
 
 This is a python API for ghost-chatbot
 
+**Requirements**
 
-Requirements
-
-you need to install the following before running this Api
-
-1 OPENCOG (cogutil, atomspace and opencog)
-
-2 Relex Server
-
-3 Guile
-
-and check that all these are working prefectly
-
-the code is tasted on python 2.75 and python 3.6
+you need to install the following before running this Api and check that all these are working prefectly
+    
+    1 OPENCOG (cogutil, atomspace and opencog)
+    
+    2 Relex Server
+    
+    3 Guile
 
 
-How to Run this
+**How to Run this**
 
-1 download or clone this projects in the directory you want
+1 Download or clone this projects in the directory you want
 
-2 in StartServer.py add your /path/to/relex location
+2 In StartServer.py add your relex location in place of /path/to/relex
 
     e.g self.relex_location = "/home/aman/relex"
 
-3 then run the apighost.py by any of your python IDE
-   or in the command line as 
+3 Then run apighost.py in any of your python IDE or in the Terminal as _python apighost.py_ in the beginning there is only one data that is parsed which is _(ghost-parse "u: (hi robot) hello human")_ so you can check it by typing _hi robot_ only then if you want to parse your own data you can type **(ghost-parse-file "path/to/file")** in the API
 
-   python apighost.py
-   
-  in the beginning there is only one data that is parsed which is 
-
-  (ghost-parse "u: (hi robot) hello human")
+    e.g (ghost-parse-file "files/files.ghost")  
   
-  so you can check it by typing hi robot only
-  
-  then if you want to parse your own data you can type 
-  
-  (ghost-parse-file "path/to/file") in the api
-  
-  e.g (ghost-parse-file "files/files.ghost")  
-  
-  then you can ask any question that is parsed in your file
-   
+ _note:_  The code is tasted on python 2.75 and python 3.6
+ 

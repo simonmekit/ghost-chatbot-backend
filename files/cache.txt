@@ -122,3 +122,29 @@
 (map cog-name (test-ghost "I can read"))
 (map cog-name (test-ghost "hi robot"))
 (map cog-name (test-ghost "hi robot"))
+hi robot
+(ghost-parse "u: (hello) what"0
+(map cog-name (test-ghost "hi robot"))
+(map cog-name (test-ghost "hi robot"))
+(map cog-name (test-ghost "hi robot"))
+hi robot
+hi robot
+hi robot
+(map cog-name (test-ghost "hi robot"))
+(map cog-name (test-ghost "hi robot"))
+(map cog-name (test-ghost "hi robot"))
+(map cog-name (test-ghost "hi robot"))
+(map cog-name (test-ghost "hi robot"))
+(map cog-name (test-ghost "hi robot"))
+(ghost-parse "u: (what) I dont know")
+(ghost-parse-file "files/files.ghost")
+(map cog-name (test-ghost "I can read"))
+(map cog-name (test-ghost "hi robot"))
+(map cog-name (test-ghost "I can read"))
+(map cog-name (test-ghost "my name is brook"))
+(ghost-parse-file "files/files.ghost")
+(map cog-name (test-ghost "hi robot"))
+(map cog-name (test-ghost "my name is amanti"))
+(map cog-name (test-ghost "I can read"))
+(map cog-name (test-ghost "hi robot"))
+ghost-parse-file "files/files.ghost"

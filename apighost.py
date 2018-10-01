@@ -92,15 +92,19 @@ class whole:
             ruletostring = rule.decode()
             if ((ruletostring == '')):
                 pass
+            elif 'ghost-parse-file' or 'ghost-parse' in ruletostring:
+                self.all_rule.append(ruletostring)
+                self.all_rule.append("\n")
+                self.question_file.write(ruletostring)
+                self.question_file.write('\n')
+                self.displayPopen()
             else:
                 action = '(map cog-name (test-ghost \"{}\"))'.format(ruletostring)
-                #self.all_rule = self.all_rule + action + '\n'
                 self.all_rule.append(action)
                 self.all_rule.append("\n")
                 self.question_file.write(action)
                 self.question_file.write('\n')
                 self.displayPopen()
-
         except Exception as e:
             print("Error Occured in writing rule: ", e)
 

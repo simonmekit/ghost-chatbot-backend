@@ -31,7 +31,7 @@ class whole:
             else:
                 print("there is a problem with guile")
         except Exception as e:
-            print("Error Occured in starting guile: ", e)
+            print("Error occurred in starting guile: ", e)
 
         try:
             mod = ""
@@ -43,14 +43,14 @@ class whole:
                 if self.running_times == 0:
                     print("Modules successfully loaded from file")
         except Exception as e:
-            print("Error Occured in loading module from file: ", e)
+            print("Error occurred in loading module from file: ", e)
         try:
             hello = '(ghost-parse "u: (hi robot) hello human")'
             disp.stdin.write(hello.encode())
             if self.running_times == 0:
                 print("guile tested successfully")
         except Exception as e:
-            print("Error Occured in testing rule: ", e)
+            print("Error occurred in testing rule: ", e)
 
         list_of_rules = self.all_rule
         aa = len(list_of_rules)
@@ -77,12 +77,12 @@ class whole:
                     disp.stdin.write(list_of_rules[i].encode())
                 i = i + 1
         except Exception as e:
-            print("Error Occured in displaying result: ", e)
+            print("Error occurred in displaying result: ", e)
 
     def ghostRule(self, rule):
         try:
             ruletostring = rule.decode()
-            if ((ruletostring == '')):
+            if ruletostring == '':
                 pass
             elif '(ghost-parse-file' in ruletostring \
                     or '(ghost-parse' in ruletostring:

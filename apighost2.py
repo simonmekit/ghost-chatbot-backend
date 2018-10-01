@@ -4,10 +4,10 @@ import subprocess as sp
 
 class whole:
     def __init__(self):
-        self.all_rule = ''
+        self.all_rule = []
         self.running_times = 0
-        self.training_loc = "/home/aman/files.ghost"
-        self.question_file = open("/home/aman/Questionfile.txt", "a+")
+        self.training_loc = "files.ghost"
+        self.question_file = open("catch.txt", "a+")
 
     def takeInput(self):
         self.displayPopen()
@@ -38,7 +38,7 @@ class whole:
 
         try:
             mod = ""
-            with open('/home/aman/module.txt', 'r') as f:
+            with open('module.txt', 'r') as f:
                 for line in f:
                     mod = mod + line
                 modtobyte = mod.encode()
@@ -56,7 +56,7 @@ class whole:
         except Exception as e:
             print("Error Occured in testing rule: ", e)
 
-        list_of_rules = self.all_rule.split('\n')
+        list_of_rules = self.all_rule
         aa = len(list_of_rules)
         try:
             i = 0
@@ -81,6 +81,7 @@ class whole:
         except Exception as e:
             print("Error Occured in displaying result: ", e)
 
+
     def ghostRule(self, rule):
         '''
         what the user can do is only test_ghost from the rule of ghost
@@ -91,15 +92,35 @@ class whole:
             ruletostring = rule.decode()
             if ((ruletostring == '')):
                 pass
+
+            elif '(ghost-parse-file' in ruletostring or \
+                    '(ghost-parse' in ruletostring or \
+                    '(test-ghost' in ruletostring or \
+                    '(map' in ruletostring:
+                self.all_rule.append("\n")
+                self.all_rule.append(ruletostring)
+                self.question_file.write(ruletostring)
+                self.question_file.write('\n')
+                self.displayPopen()
+
+            elif 'u:' in rule.decode():
+                str = '(ghost-parse (\"{}\"))'.format(ruletostring)
+                self.all_rule.append("\n")
+                self.all_rule.append(str)
+                self.question_file.write(str)
+                self.question_file.write('\n')
+                self.displayPopen()
+
             else:
                 action = '(map cog-name (test-ghost \"{}\"))'.format(ruletostring)
-                self.all_rule = self.all_rule + action + '\n'
+                self.all_rule.append("\n")
+                self.all_rule.append(action)
                 self.question_file.write(action)
                 self.question_file.write('\n')
                 self.displayPopen()
 
         except Exception as e:
-            print("Error Occured in writing rule: ", e)
+            print("Error occurred in writing rule: ", e)
 
 
 print("-------------Welcome-------------")

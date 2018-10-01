@@ -93,9 +93,14 @@ class whole:
         # self.proc.stdin.close()
 
     def outputIT(self):
+        inppp = self.executeRule("(test-ghost ( \"lksdf\")")
+        out= ""
         for i,j in zip(self.ruleset,self.repset):
-            print(i)
-            print(j)
+            self.ruleset.append(i)
+            if out == '':
+                self.repset.append(0)
+            else:
+                self.repset.append(out)
 
 
 print("-------------Welcome-------------")

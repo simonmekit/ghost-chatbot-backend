@@ -1,94 +1,110 @@
-import subprocess as sp
-import os
-import sys
 
+import subprocess as sp
 
 class whole:
     def __init__(self):
-        self.isGuile = False
-        self.proc = ""
-        self.takeInput()
+        self.all_rule = []
+        self.all_answer = []
+        self.running_times = 0
+        self.training_loc = "files/files.ghost"
+        self.question_file = open("files/cache.txt", "a+")
 
     def takeInput(self):
-        self.startGuile()
-        while(True):
+        self.displayPopen()
+        while True:
+            self.running_times = self.running_times + 1
             value = input("Please enter your rule or '(quit)' to exit: ")
             if value == "(quit)":
                 found = input("Are you sure? Y or N: ")
                 if found == "Y" or found == "y":
+                    self.question_file.close()
                     raise SystemExit
-                else:
-                    self.takeInput()
-            print(self.ghostRule(value.encode()))
+                elif found == "N" or found == "n":
+                    continue
+            self.ghostRule(value.encode())
 
-
-    def startGuile(self):
-        if not self.isGuile:
-            print("--------------------starting GUILE----------------------")
-            self.proc = sp.Popen('guile', stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.STDOUT)
-            try:
-                a = self.proc.stdout.readline()
-                if "GNU Guile" in a.decode():
-                    print("Guile successfully opened")
-                else:
-                    print("Guile Failed!")
-                    exit(0)
-            except Exception as e:
-                print("Error occurred in starting guile: ", e)
-        self.loadModules()
-        self.testGuile()
-
-
-
-    def loadModules(self):
-        # loading modules
+    def displayPopen(self):
+        disp = sp.Popen('guile', stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.STDOUT)
         try:
-            modules = ""
-            with open('module.txt', 'r') as f:
+            a = disp.stdout.readline()
+            b = []
+            if "GNU Guile" in a.decode():
+                if self.running_times == 0:
+                    print("guile successfully opened")
+            else:
+                print("there is a problem with guile")
+        except Exception as e:
+            print("Error Occured in starting guile: ", e)
+
+        try:
+            mod = ""
+            with open('files/module.txt', 'r') as f:
                 for line in f:
-                    modules += line
-                toByte = modules.encode()
-                self.proc.stdin.write(toByte)
-                print("Modules successfully loaded from file")
+                    mod = mod + line
+                modtobyte = mod.encode()
+                disp.stdin.write(modtobyte)
+                if self.running_times == 0:
+                    print("Modules successfully loaded from file")
         except Exception as e:
-            print("Error occurred while trying to load modules from file: ", e)
-
-    def testGuile(self):
+            print("Error Occured in loading module from file: ", e)
         try:
-            code = b"""
-                    (ghost-parse "u: (hello) hi there")
-                    """
-            self.proc.stdin.write(code)
-            # print(self.proc.stdout.readline())
-            test = b"""
-                    (map cog-name (test-ghost "hello"))
-                    """
-            g = self.proc.stdin.write(test)
-            print("Test completed successfully!")
-            #Train from files
-            replay = self.proc.stdin.write(b"""(ghost-parse-files \"./files.ghost\")""")
-            print("Trained file rules successfully")
-            # with open('opencog.log', 'rw') as f:
-            # opencog.self.proc.communicate().
-            # opencog.self.proc.communicate()
+            code = '(ghost-parse-file \"{}\")'.format(self.training_loc)
+            disp.stdin.write(code.encode())
+            if self.running_times == 0:
+                print("data successfully loaded to robot")
         except Exception as e:
-            print("Error occurred in testing rule: ", e)
+            print("Error Occured in testing rule: ", e)
+
+        list_of_rules = self.all_rule
+        aa = len(list_of_rules)
+        try:
+            i = 0
+            while i <= aa - 2:
+                if i == aa - 2:
+                    stdou, stder = disp.communicate(input=list_of_rules[aa - 2].encode())
+                    result_to_list = stdou.decode().split('\n')
+                    answer = []
+                    index = 0
+                    while index < len(result_to_list):
+                        if "[INFO] [GHOST] Say:" in result_to_list[index] \
+                                or "[INFO] [GHOST] Say:" in result_to_list[index] \
+                                or "<unnamed port>" in result_to_list[index] \
+                                or "<unspecified>" in result_to_list[index] \
+                                or "ERROR: In procedure module-lookup: Unbound variable:" in result_to_list[index]:
+                            answer.append(result_to_list[index])
+                        index += 1
+                    self.all_answer.append(answer[-1])
+                    self.all_answer.append("\n")
+                    print(self.all_answer[-2])
+                else:
+                    disp.stdin.write(list_of_rules[i].encode())
+                i = i + 1
+        except Exception as e:
+            print("Error Occured in displaying result: ", e)
 
     def ghostRule(self, rule):
+        '''
+        what the user can do is only test_ghost from the rule of ghost
+        if he want ghost-parse or ghost-parse file this means obviously he is a programmer so he can hopefully
+        edit the code means changing the file locations or adding the rule to where the file is avialabled
+        '''
         try:
-            toString = rule.decode()
-            if 'ghost-parse-file' in toString or 'ghost-parse' in toString:
-                print(self.proc.stdin.write(toString))
-                # print(self.proc.stdout.)
-            elif toString != '':
-                rule = '(map cog-name (test-ghost \"{}\"))'.format(toString)
-                print(self.proc.stdin.write(rule.encode()))
-                # print(self.proc.stdout.communicate())
-                # return self.proc.stdout.readline()
-            else: self.takeInput()
+            ruletostring = rule.decode()
+            if ((ruletostring == '')):
+                pass
+            else:
+                action = '(map cog-name (test-ghost \"{}\"))'.format(ruletostring)
+                #self.all_rule = self.all_rule + action + '\n'
+                self.all_rule.append(action)
+                self.all_rule.append("\n")
+                self.question_file.write(action)
+                self.question_file.write('\n')
+                self.displayPopen()
+
         except Exception as e:
-            print("Error occurred in writing rule: ", e)
+            print("Error Occured in writing rule: ", e)
 
 
 print("-------------Welcome-------------")
 one = whole()
+one.takeInput()

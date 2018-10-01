@@ -5,6 +5,7 @@ import subprocess as sp
 class whole:
     def __init__(self):
         self.all_rule = []
+        self.all_answer = []
         self.running_times = 0
         self.training_loc = "files.ghost"
         self.question_file = open("catch.txt", "a+")
@@ -58,7 +59,8 @@ class whole:
 
         list_of_rules = self.all_rule
         aa = len(list_of_rules)
-        print(aa)
+        # print(list_of_rules)
+        # print(aa)
         try:
             i = 0
             while i <= aa - 2:
@@ -67,15 +69,19 @@ class whole:
                     result_to_list = stdou.decode().split('\n')
                     answer = []
                     index = 0
+                    # print(result_to_list)
                     while index < len(result_to_list):
-                        if "[INFO] [GHOST] Say:" in result_to_list[index] \
-                                or "[INFO] [GHOST] Say:" in result_to_list[index] \
+                        if "[WARN] [GHOST]" in result_to_list[index] \
+                                or "[GHOST]" in result_to_list[index] \
                                 or "<unnamed port>" in result_to_list[index] \
                                 or "<unspecified>" in result_to_list[index] \
                                 or "ERROR: In procedure module-lookup: Unbound variable:" in result_to_list[index]:
                             answer.append(result_to_list[index])
                         index += 1
-                    print(answer[len(answer) - 1])
+                    # print(answer)
+                    self.all_answer.append(answer[-1])
+                    self.all_answer.append("\n")
+                    print(self.all_answer[-2])
                 else:
                     disp.stdin.write(list_of_rules[i].encode())
                 i = i + 1
@@ -98,16 +104,16 @@ class whole:
                     '(ghost-parse' in ruletostring or \
                     '(test-ghost' in ruletostring or \
                     '(map' in ruletostring:
-                self.all_rule.append("\n")
                 self.all_rule.append(ruletostring)
+                self.all_rule.append("\n")
                 self.question_file.write(ruletostring)
                 self.question_file.write('\n')
                 self.displayPopen()
 
             elif 'u:' in rule.decode():
                 str = '(ghost-parse (\"{}\"))'.format(ruletostring)
-                self.all_rule.append("\n")
                 self.all_rule.append(str)
+                self.all_rule.append("\n")
                 self.question_file.write(str)
                 self.question_file.write('\n')
                 self.displayPopen()

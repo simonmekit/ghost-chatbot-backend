@@ -1,18 +1,16 @@
-import subprocess as sub
-
-
+import subprocess as sp
 
 class Relex:
     def __init__(self):
+        self.relex_location = "/home/aman/relex"
         self.isRelex = False
         self.startRelex()
-        # self.proc = ""
 
     def startRelex(self):
         if not self.isRelex:
             print("----------opening relex server------------")
             try:
-                sub.call("./opencog-server.sh", cwd="/home/brook/Documents/relex/",shell=False)
+                sp.call('./opencog-server.sh', cwd='{}'.format(self.relex_location))
                 print("Relex Server opened successfully")
                 self.isRelex = True
             except ValueError as e:

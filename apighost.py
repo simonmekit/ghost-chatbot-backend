@@ -1,5 +1,3 @@
-__author__ = 'simon, brook, and amante'
-
 import subprocess as sp
 
 class whole:
@@ -7,8 +5,7 @@ class whole:
         self.all_rule = []
         self.all_answer = []
         self.running_times = 0
-        self.training_loc = "files.ghost"
-        self.question_file = open("catch.txt", "a+")
+        self.question_file = open("files/cache.txt", "a+")
 
     def takeInput(self):
         self.displayPopen()
@@ -28,7 +25,6 @@ class whole:
         disp = sp.Popen('guile', stdin=sp.PIPE, stdout=sp.PIPE, stderr=sp.STDOUT)
         try:
             a = disp.stdout.readline()
-            b = []
             if "GNU Guile" in a.decode():
                 if self.running_times == 0:
                     print("guile successfully opened")
@@ -39,7 +35,7 @@ class whole:
 
         try:
             mod = ""
-            with open('module.txt', 'r') as f:
+            with open('files/module.txt', 'r') as f:
                 for line in f:
                     mod = mod + line
                 modtobyte = mod.encode()
@@ -48,37 +44,32 @@ class whole:
                     print("Modules successfully loaded from file")
         except Exception as e:
             print("Error Occured in loading module from file: ", e)
-
         try:
-            code = '(ghost-parse-file \"{}\")'.format(self.training_loc)
-            disp.stdin.write(code.encode())
+            hello = '(ghost-parse "u: (hi robot) hello human")'
+            disp.stdin.write(hello.encode())
             if self.running_times == 0:
-                print("data successfully loaded to robot")
+                print("guile tested successfully")
         except Exception as e:
             print("Error Occured in testing rule: ", e)
 
         list_of_rules = self.all_rule
         aa = len(list_of_rules)
-        # print(list_of_rules)
-        # print(aa)
         try:
             i = 0
             while i <= aa - 2:
                 if i == aa - 2:
                     stdou, stder = disp.communicate(input=list_of_rules[aa - 2].encode())
                     result_to_list = stdou.decode().split('\n')
+
                     answer = []
                     index = 0
-                    # print(result_to_list)
                     while index < len(result_to_list):
-                        if "[WARN] [GHOST]" in result_to_list[index] \
-                                or "[GHOST]" in result_to_list[index] \
+                        if "[GHOST]" in result_to_list[index] \
                                 or "<unnamed port>" in result_to_list[index] \
                                 or "<unspecified>" in result_to_list[index] \
                                 or "ERROR: In procedure module-lookup: Unbound variable:" in result_to_list[index]:
                             answer.append(result_to_list[index])
                         index += 1
-                    # print(answer)
                     self.all_answer.append(answer[-1])
                     self.all_answer.append("\n")
                     print(self.all_answer[-2])
@@ -88,36 +79,18 @@ class whole:
         except Exception as e:
             print("Error Occured in displaying result: ", e)
 
-
     def ghostRule(self, rule):
-        '''
-        what the user can do is only test_ghost from the rule of ghost
-        if he want ghost-parse or ghost-parse file this means obviously he is a programmer so he can hopefully
-        edit the code means changing the file locations or adding the rule to where the file is avialabled
-        '''
         try:
             ruletostring = rule.decode()
             if ((ruletostring == '')):
                 pass
-
-            elif '(ghost-parse-file' in ruletostring or \
-                    '(ghost-parse' in ruletostring or \
-                    '(test-ghost' in ruletostring or \
-                    '(map' in ruletostring:
+            elif '(ghost-parse-file' in ruletostring \
+                    or '(ghost-parse' in ruletostring:
                 self.all_rule.append(ruletostring)
                 self.all_rule.append("\n")
                 self.question_file.write(ruletostring)
                 self.question_file.write('\n')
                 self.displayPopen()
-
-            elif 'u:' in rule.decode():
-                str = '(ghost-parse (\"{}\"))'.format(ruletostring)
-                self.all_rule.append(str)
-                self.all_rule.append("\n")
-                self.question_file.write(str)
-                self.question_file.write('\n')
-                self.displayPopen()
-
             else:
                 action = '(map cog-name (test-ghost \"{}\"))'.format(ruletostring)
                 self.all_rule.append(action)
@@ -127,7 +100,7 @@ class whole:
                 self.displayPopen()
 
         except Exception as e:
-            print("Error occurred in writing rule: ", e)
+            print("Error Occured in writing rule: ", e)
 
 
 print("-------------Welcome-------------")

@@ -91,6 +91,13 @@ class whole:
                 self.question_file.write(ruletostring)
                 self.question_file.write('\n')
                 self.displayPopen()
+            elif 'u:' in rule.decode() or 's:' in rule.decode():
+                str = '(ghost-parse (\"{}\"))'.format(ruletostring)
+                self.all_rule.append(str)
+                self.all_rule.append("\n")
+                self.question_file.write(str)
+                self.question_file.write('\n')
+                self.displayPopen()
             else:
                 action = '(map cog-name (test-ghost \"{}\"))'.format(ruletostring)
                 self.all_rule.append(action)
@@ -100,7 +107,7 @@ class whole:
                 self.displayPopen()
 
         except Exception as e:
-            print("Error Occured in writing rule: ", e)
+            print("Error occurred in writing rule: ", e)
 
 
 print("-------------Welcome-------------")

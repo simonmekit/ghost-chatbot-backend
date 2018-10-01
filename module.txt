@@ -1,6 +1,0 @@
-(use-modules(opencog)
-(opencog nlp)
-(opencog nlp relex2logic)
-(opencog openpsi)
-(opencog ghost)
-(opencog ghost procedures))

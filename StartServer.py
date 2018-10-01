@@ -2,7 +2,7 @@ import subprocess as sp
 
 class Relex:
     def __init__(self):
-        self.relex_location = "/home/aman/relex"
+        self.relex_location = "/home/brook/Documents/relex"
         self.isRelex = False
         self.startRelex()
 

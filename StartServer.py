@@ -2,15 +2,15 @@ import subprocess as sp
 
 class Relex:
     def __init__(self):
-        self.relex_location = "/home/brook/Documents/relex"
         self.isRelex = False
         self.startRelex()
 
     def startRelex(self):
         if not self.isRelex:
-            print("----------opening relex server------------")
+            print("Opening Relex Server...")
+            relexloc = input("Please enter the location of your relex folder:")
             try:
-                sp.call('./opencog-server.sh', cwd='{}'.format(self.relex_location))
+                sp.call('./opencog-server.sh', cwd='{}'.format(relexloc))
                 print("Relex Server opened successfully")
                 self.isRelex = True
             except ValueError as e:

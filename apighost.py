@@ -35,12 +35,8 @@ class whole:
             print("Error occurred when starting guile: ", e)
 
         self.loadmodules()
-        self.loadrules()
+        self.loadrules('files/files.ghost')
         self.testguile()
-        # try:
-        #     self.loadrules()
-        # except Exception as e:
-        #     print("Error occurred while loading rules from file: ", e)
 
         list_of_rules = self.all_rule
         aa = len(list_of_rules)
@@ -75,7 +71,9 @@ class whole:
             if ruletostring == '':
                 pass
             elif '(ghost-parse-file' in ruletostring \
-                    or '(ghost-parse' in ruletostring:
+                    or '(ghost-parse' in ruletostring\
+                    or '(map cog-name' in ruletostring\
+                    or '(test-ghost' in ruletostring:
                 self.writetofile(ruletostring)
             elif 'u:' in rule.decode() or 's:' in rule.decode():
                 str = '(ghost-parse (\"{}\"))'.format(ruletostring)
@@ -104,16 +102,14 @@ class whole:
         except Exception as e:
             print("Error occurred in loading module from file: ", e)
 
-    def loadrules(self):
+    def loadrules(self, rulefileloc):
         try:
             instruction = ""
-            with open('files/files.ghost', 'r') as f:
+            with open(rulefileloc, 'r') as f:
                 for line1 in f:
                     instruction += '(ghost-parse \"{}\")'.format(line1)
                 convtobyte = instruction.encode()
-                # print(convtobyte)
                 self.disp.stdin.write(convtobyte)
-                # self.ghostRule(convtobyte)
                 if self.running_times == 0:
                     print("Rules successfully loaded from file")
         except Exception as e:

@@ -2,7 +2,7 @@ import subprocess as sp
 
 class Relex:
     def __init__(self):
-        self.relex_location = "/path/to/relex"
+        self.relex_location = "/home/aman/relex"
         self.isRelex = False
         self.startRelex()
 
@@ -17,5 +17,6 @@ class Relex:
                 self.isRelex = False
                 print("Error occured in opening relex server")
                 exit(0)
+
 
 serve = Relex()

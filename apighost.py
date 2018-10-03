@@ -37,10 +37,6 @@ class whole:
         self.loadmodules()
         self.loadrules()
         self.testguile()
-        # try:
-        #     self.loadrules()
-        # except Exception as e:
-        #     print("Error occurred while loading rules from file: ", e)
 
         list_of_rules = self.all_rule
         aa = len(list_of_rules)
@@ -56,7 +52,8 @@ class whole:
                     while index < len(result_to_list):
                         if "[GHOST]" in result_to_list[index] \
                                 or "<unnamed port>" in result_to_list[index] \
-                                or "<unspecified>" in result_to_list[index] \
+                                or "<unspecified>" in result_to_list[index]\
+                                or "ERROR: In procedure opencog-extension:" in result_to_list[index] \
                                 or "ERROR: In procedure module-lookup: Unbound variable:" in result_to_list[index]:
                             answer.append(result_to_list[index])
                         index += 1
@@ -75,7 +72,9 @@ class whole:
             if ruletostring == '':
                 pass
             elif '(ghost-parse-file' in ruletostring \
-                    or '(ghost-parse' in ruletostring:
+                    or '(ghost-parse' in ruletostring \
+                    or '(map cog-name' in ruletostring \
+                    or '(test-ghost' in ruletostring:
                 self.writetofile(ruletostring)
             elif 'u:' in rule.decode() or 's:' in rule.decode():
                 str = '(ghost-parse (\"{}\"))'.format(ruletostring)

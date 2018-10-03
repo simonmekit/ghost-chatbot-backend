@@ -35,7 +35,7 @@ class whole:
             print("Error occurred when starting guile: ", e)
 
         self.loadmodules()
-        self.loadrules('files/files.ghost')
+        self.loadrules()
         self.testguile()
 
         list_of_rules = self.all_rule
@@ -52,7 +52,8 @@ class whole:
                     while index < len(result_to_list):
                         if "[GHOST]" in result_to_list[index] \
                                 or "<unnamed port>" in result_to_list[index] \
-                                or "<unspecified>" in result_to_list[index] \
+                                or "<unspecified>" in result_to_list[index]\
+                                or "ERROR: In procedure opencog-extension:" in result_to_list[index] \
                                 or "ERROR: In procedure module-lookup: Unbound variable:" in result_to_list[index]:
                             answer.append(result_to_list[index])
                         index += 1
@@ -71,8 +72,8 @@ class whole:
             if ruletostring == '':
                 pass
             elif '(ghost-parse-file' in ruletostring \
-                    or '(ghost-parse' in ruletostring\
-                    or '(map cog-name' in ruletostring\
+                    or '(ghost-parse' in ruletostring \
+                    or '(map cog-name' in ruletostring \
                     or '(test-ghost' in ruletostring:
                 self.writetofile(ruletostring)
             elif 'u:' in rule.decode() or 's:' in rule.decode():
@@ -102,14 +103,16 @@ class whole:
         except Exception as e:
             print("Error occurred in loading module from file: ", e)
 
-    def loadrules(self, rulefileloc):
+    def loadrules(self):
         try:
             instruction = ""
-            with open(rulefileloc, 'r') as f:
+            with open('files/files.ghost', 'r') as f:
                 for line1 in f:
                     instruction += '(ghost-parse \"{}\")'.format(line1)
                 convtobyte = instruction.encode()
+                # print(convtobyte)
                 self.disp.stdin.write(convtobyte)
+                # self.ghostRule(convtobyte)
                 if self.running_times == 0:
                     print("Rules successfully loaded from file")
         except Exception as e:

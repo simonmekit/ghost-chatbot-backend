@@ -1,4 +1,5 @@
 import subprocess as sp
+import argparse
 
 class whole:
     def __init__(self):
@@ -7,8 +8,18 @@ class whole:
         self.running_times = 0
         self.question_file = open("files/cache.txt", "a+")
         self.disp = ""
+        self.file_dir = 'files/files.ghost'
+        self.args = ''
+
+    def get_arguments(self):
+        parser = argparse.ArgumentParser(description='Api ghost')
+        parser.add_argument('--file_dir', type=str, default=self.file_dir,
+                            help = 'The directory containing the training ghost file')
+
+        return parser.parse_args()
 
     def takeInput(self):
+        self.args = self.get_arguments()
         self.displayPopen()
         while True:
             self.running_times += 1
@@ -35,7 +46,7 @@ class whole:
             print("Error occurred when starting guile: ", e)
 
         self.loadmodules()
-        self.loadrules()
+        self.loadrules(self.args.file_dir)
         self.testguile()
 
         list_of_rules = self.all_rule
@@ -53,7 +64,6 @@ class whole:
                         if "[GHOST]" in result_to_list[index] \
                                 or "<unnamed port>" in result_to_list[index] \
                                 or "<unspecified>" in result_to_list[index]\
-                                or "ERROR: In procedure opencog-extension:" in result_to_list[index] \
                                 or "ERROR: In procedure module-lookup: Unbound variable:" in result_to_list[index]:
                             answer.append(result_to_list[index])
                         index += 1
@@ -103,10 +113,10 @@ class whole:
         except Exception as e:
             print("Error occurred in loading module from file: ", e)
 
-    def loadrules(self):
+    def loadrules(self, file_dir):
         try:
             instruction = ""
-            with open('files/files.ghost', 'r') as f:
+            with open("" + file_dir + "", 'r') as f:
                 for line1 in f:
                     instruction += '(ghost-parse \"{}\")'.format(line1)
                 convtobyte = instruction.encode()
@@ -126,6 +136,7 @@ class whole:
                 print("Guile has tested successfully!")
         except Exception as e:
             print("Error occurred in testing rule: ", e)
+
 
 
 print("-------------Welcome-------------")

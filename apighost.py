@@ -57,7 +57,6 @@ class whole:
                 if i == aa - 1:
                     stdou, stder = self.disp.communicate(input=list_of_rules[aa - 1].encode())
                     result_to_list = stdou.decode().split('\n')
-                    # print(result_to_list[-1])
                     answer = []
                     index = 0
                     while index < len(result_to_list):

@@ -1,6 +1,6 @@
 # ghost-chatbot-Api
 
-This is a python API for ghost-chatbot
+This is a python API designed to eliminate the preliminary procedures executed when using GHOST(General Holistic Organism Scripting Tool), providing smooth interaction between the Relex server and Guile.
 
 **Requirements**
 
@@ -17,9 +17,7 @@ you need to install the following before running this Api and check that all the
 
 1 Download or clone this projects in the directory you want
 
-2 In StartServer.py add your relex location in place of /path/to/relex
-
-    e.g self.relex_location = "/home/aman/relex"
+2 run StartServer.py as python
 
 3 Then run StartServer.py in any of IDE or in Terminal as  _python StartServer.py_
 

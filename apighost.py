@@ -51,6 +51,7 @@ class whole:
 
         list_of_rules = self.all_rule
         aa = len(list_of_rules)
+        #print(list_of_rules)
         try:
             i = 0
             while i <= aa - 1:
@@ -61,6 +62,7 @@ class whole:
                     index = 0
                     while index < len(result_to_list):
                         if "[GHOST]" in result_to_list[index] \
+                                or "[INFO] [say]" in result_to_list[index] \
                                 or "<unnamed port>" in result_to_list[index] \
                                 or "<unspecified>" in result_to_list[index]\
                                 or "ERROR: In procedure module-lookup: Unbound variable:" in result_to_list[index]:
@@ -68,6 +70,7 @@ class whole:
                         index += 1
                     self.all_answer.append(answer[-1])
                     self.all_answer.append("\n")
+                    #print(self.all_answer)
                     print(answer[-1])
                 else:
                     self.disp.stdin.write(list_of_rules[i].encode())
